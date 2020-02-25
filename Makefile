@@ -6,42 +6,58 @@
 #    By: jhallama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/21 13:26:51 by jhallama          #+#    #+#              #
-#    Updated: 2020/02/21 13:28:04 by jhallama         ###   ########.fr        #
+#    Updated: 2020/02/25 14:13:02 by jhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = $(CHECKER) $(PUSH_SWAP)
 
-SRC = 
+CHECKER = checker
+CHECKER_SRC = checker.c
+CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
+CHECKER_HEADERS = -I checker.h
 
-HEADERS = 
+PUSH_SWAP = push_swap
+PUSH_SWAP_SRC = push_swap.c
+PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
+PUSH_SWAP_HEADERS = -I push_swap.h
 
-OBJ = $(SRC:.c=.o)
+LIBFT = libft/libft.a
 
-.PHONY: all clean fclean re
+FT_PRINTF = libft/ft_printf/ft_printf.a
+
+FLAGS = -Wall -Wextra -Werror
+
+.PHONY: all clean fclean re 
 
 all: $(NAME)
 
-$(NAME):
+$(LIBFT):
 	@make -C libft/
+
+$(FT_PRINTF):
 	@make -C libft/ft_printf/
-	@gcc -Wall -Wextra -Werror -c $(SRC) $(HEADERS)
-	@ar -rc library.a $(OBJ)
-	@ranlib library.a
-	@gcc -Wall -Wextra -Werror library.a libft/libft.a libft/ft_printf/ft_printf.a $(SRC) $(HEADERS) -o $(NAME)
-	@echo "Made evvvrything!"
+
+$(CHECKER): $(LIBFT) $(FT_PRINTF)
+	@gcc $(FLAGS) -c $(CHECKER_SRC)
+	@gcc $(FLAGS) -o $(CHECKER) $(CHECKER_OBJ) $(CHECKER_HEADERS) $(LIBFT) $(FT_PRINTF)
+	@echo "Made checker"
+
+$(PUSH_SWAP): $(LIBFT) $(FT_PRINTF)
+	@gcc $(FLAGS) -c $(PUSH_SWAP_SRC)
+	@gcc $(FLAGS) -o $(PUSH_SWAP) $(PUSH_SWAP_OBJ) $(PUSH_SWAP_HEADERS) $(LIBFT) $(FT_PRINTF)
+	@echo "Made push_swap"
 
 clean:
-	@/bin/rm -f $(OBJ)
 	@make -C libft/ clean
 	@make -C libft/ft_printf/ clean
+	@rm -f $(CHECKER_OBJ) $(PUSH_SWAP_OBJ)
 	@echo "Cleaned .o files"
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-	@/bin/rm -f library.a
 	@make -C libft/ fclean
 	@make -C libft/ft_printf/ fclean
-	@echo "Cleaned .o files, .a files and fdf"
+	@rm -f $(CHECKER) $(PUSH_SWAP)
+	@echo "Cleaned binary files"
 
 re: fclean all
