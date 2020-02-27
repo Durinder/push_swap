@@ -6,21 +6,21 @@
 #    By: jhallama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/21 13:26:51 by jhallama          #+#    #+#              #
-#    Updated: 2020/02/25 14:13:02 by jhallama         ###   ########.fr        #
+#    Updated: 2020/02/27 18:40:43 by jhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(CHECKER) $(PUSH_SWAP)
 
 CHECKER = checker
-CHECKER_SRC = checker.c
-CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
+CHECKER_SRC = checker.c init_stacks.c read_commands.c check_solution.c swap.c push.c rotate.c visualizer.c
 CHECKER_HEADERS = -I checker.h
+CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 
 PUSH_SWAP = push_swap
 PUSH_SWAP_SRC = push_swap.c
-PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 PUSH_SWAP_HEADERS = -I push_swap.h
+PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 
 LIBFT = libft/libft.a
 
@@ -58,6 +58,6 @@ fclean: clean
 	@make -C libft/ fclean
 	@make -C libft/ft_printf/ fclean
 	@rm -f $(CHECKER) $(PUSH_SWAP)
-	@echo "Cleaned binary files"
+	@echo "Cleaned libraries and binary files"
 
 re: fclean all
