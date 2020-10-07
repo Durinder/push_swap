@@ -40,12 +40,12 @@ $(FT_PRINTF):
 
 $(CHECKER): $(LIBFT) $(FT_PRINTF)
 	@gcc $(FLAGS) -c $(CHECKER_SRC)
-	@gcc $(FLAGS) -o $(CHECKER) $(CHECKER_OBJ) $(CHECKER_HEADERS) $(LIBFT) $(FT_PRINTF)
+	@gcc $(FLAGS) -o $(CHECKER) $(CHECKER_OBJ) $(CHECKER_HEADERS) $(FT_PRINTF) $(LIBFT)
 	@echo "Made checker"
 
 $(PUSH_SWAP): $(LIBFT) $(FT_PRINTF)
 	@gcc $(FLAGS) -c $(PUSH_SWAP_SRC)
-	@gcc $(FLAGS) -o $(PUSH_SWAP) $(PUSH_SWAP_OBJ) $(PUSH_SWAP_HEADERS) $(LIBFT) $(FT_PRINTF)
+	@gcc $(FLAGS) -o $(PUSH_SWAP) $(PUSH_SWAP_OBJ) $(PUSH_SWAP_HEADERS) $(FT_PRINTf) $(LIBFT)
 	@echo "Made push_swap"
 
 clean:

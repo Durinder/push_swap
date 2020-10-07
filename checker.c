@@ -28,7 +28,7 @@ int		main(int argc, char **argv)
 			ft_error_exit("Error: Empty argument.");
 	}
 	stacks->a = (input == NULL) ? init(argc, ++argv) : init(argc, input);
-	stacks->elems = (input) ? count_elems(input) : argc - 1;
+	stacks->elems = (input) ? count_elems(input) : (size_t)argc - 1;
 	init_b(stacks);
 	read_commands(stacks);
 	check_solution(stacks) == 1 ? ft_printf("OK") : ft_printf("KO");

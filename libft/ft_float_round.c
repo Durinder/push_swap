@@ -16,7 +16,7 @@ static char		*rounding(char *s, int precision)
 {
 	char	*tmp;
 	size_t	carry;
-	size_t	i;
+	int	i;
 
 	carry = 0;
 	i = 0;
@@ -98,7 +98,7 @@ static char		*integer_assignment(char *integers, const char *decimals,
 		int precision)
 {
 	char	*tmp;
-	size_t	i;
+	int	i;
 	size_t	carry;
 
 	if ((int)ft_strlen(decimals) <= precision)
