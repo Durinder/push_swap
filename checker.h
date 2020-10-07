@@ -40,5 +40,6 @@ void			rotate_b(t_stacks *stacks);
 void			reverse_rotate_a(t_stacks *stacks);
 void			reverse_rotate_b(t_stacks *stacks);
 void			visualize(t_stacks *stacks);
+void			check_duplicates(int *stack, size_t size);
 //void			free_stacks(t_stacks *stacks);
 #endif

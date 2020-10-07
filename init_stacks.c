@@ -36,6 +36,23 @@ size_t	count_elems(char **input)
 	return (i);
 }
 
+void	check_duplicates(int *stack, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = -1;
+	while (++i < size)
+	{
+		j = i + 1;
+		while (j <= size)
+		{
+			if (stack[i] == stack[j++])
+				ft_error_exit("Error: Duplicate number(s) in input.");
+		}
+	}
+}
+
 int		*init(int argc, char **input)
 {
 	int		*stack;

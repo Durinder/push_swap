@@ -29,6 +29,7 @@ int		main(int argc, char **argv)
 	}
 	stacks->a = (input == NULL) ? init(argc, ++argv) : init(argc, input);
 	stacks->elems = (input) ? count_elems(input) : (size_t)argc - 1;
+	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
 	read_commands(stacks);
 	check_solution(stacks) == 1 ? ft_printf("OK") : ft_printf("KO");
