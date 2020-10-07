@@ -59,6 +59,18 @@ static void	command_switch(const char *cmd, t_stacks *stacks)
 	command_switch_rotates(cmd, stacks);
 }
 
+static int	allowed_commands(char *cmd)
+{
+	if (ft_strcmp(cmd, "sa") == 0 || ft_strcmp(cmd, "sb") == 0 ||
+			ft_strcmp(cmd, "ss") == 0 || ft_strcmp(cmd, "pa") == 0 ||
+			ft_strcmp(cmd, "pb") == 0 || ft_strcmp(cmd, "ra") == 0 ||
+			ft_strcmp(cmd, "rb") == 0 || ft_strcmp(cmd, "rr") == 0 ||
+			ft_strcmp(cmd, "rra") == 0 || ft_strcmp(cmd, "rrb") == 0 ||
+			ft_strcmp(cmd, "rrr") == 0)
+		return (0);
+	return (1);
+}
+
 void		read_commands(t_stacks *stacks)
 {
 	int		ret;
@@ -69,6 +81,11 @@ void		read_commands(t_stacks *stacks)
 	visualize(stacks);
 	while ((ret = get_next_line(0, &line) > 0))
 	{
+		if (allowed_commands(line) == 1)
+		{
+			ft_strdel(&line);
+			ft_error_exit("Error: Incorrect operation.");
+		}
 		command_switch(line, stacks);
 		visualize(stacks);
 		ft_strdel(&line);
