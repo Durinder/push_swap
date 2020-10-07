@@ -16,11 +16,18 @@ void	visualize(t_stacks *stacks)
 {
 	size_t	i;
 
-	ft_printf("STACK_A  |  STACK_B\n");
+	ft_printf("STACK_A     |     STACK_B\n");
 	i = 0;
-	while (i < stacks->elems)
+	while (i < stacks->a_size || i < stacks->b_size)
 	{
-		ft_printf("%-9d|%9d\n", stacks->a[i], stacks->b[i]);
+		if (stacks->a_size > i)
+			ft_printf("%-12d", stacks->a[i]);
+		else
+			ft_printf("            ");
+		if (stacks->b_size > i)
+			ft_printf("%13d\n", stacks->b[i]);
+		else
+			ft_printf("\n");
 		i++;
 	}
 }
