@@ -38,6 +38,7 @@ int	return_line(char **s, int fd, char **line)
 			return (1);
 		}
 	}
+	ft_strdel(&s[fd]);
 	return (0);
 }
 
