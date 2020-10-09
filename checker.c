@@ -27,16 +27,16 @@ int		main(int argc, char **argv)
 		if (input[0] == NULL)
 			ft_error_exit("Error: Empty argument.");
 	}
-	stacks->a = (input == NULL) ? init(argc, ++argv) : init(argc, input);
-	stacks->elems = (input) ? count_elems(input) : (size_t)argc - 1;
+	stacks->v = (input == NULL) ? v_check(argv) : v_check(input);
+	stacks->a = (input == NULL) ? init(argc, ++argv) : init(count_elems(input + 1, 0), input);
+	stacks->elems = (input) ? count_elems(input, 1) : (size_t)argc - 1;
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
 	read_commands(stacks);
 	check_solution(stacks) == 1 ? ft_printf("OK") : ft_printf("KO");
-//	size_t i = 0;
-//	while (i < stacks->elems)
-//		ft_printf("%d\n", stacks->a[i++]);
-//	free_stacks(stacks);
+	free(stacks->a);
+	free(stacks->b);
+	free(stacks);
 //	while (1) {};
 	return (0);
 }
