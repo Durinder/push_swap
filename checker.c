@@ -28,8 +28,8 @@ int		main(int argc, char **argv)
 			ft_error_exit("Error: Empty argument.");
 	}
 	stacks->v = (input == NULL) ? v_check(argv) : v_check(input);
-	stacks->a = (input == NULL) ? init(argc, ++argv) : init(count_elems(input + 1, 0), input);
-	stacks->elems = (input) ? count_elems(input, 1) : (size_t)argc - 1;
+	stacks->a = (input == NULL) ? init(argc, ++argv) : init(count_elems(input, 0), input);
+	stacks->elems = (input) ? count_elems(input, 1) : 1;
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
 	read_commands(stacks);

@@ -25,14 +25,19 @@ void	init_b(t_stacks *stacks)
 	stacks->b_size = 0;
 }
 
-size_t	count_elems(char **input)
+size_t	count_elems(char **input, int n)
 {
 	size_t	i;
 
 	i = 0;
 	while (input[i])
+	{
+		if (n == 1)
+			ft_strdel(&input[i]);
 		i++;
-	ft_strdel(input);
+	}
+	if (n == 1)
+		free(input);
 	return (i);
 }
 
@@ -42,6 +47,8 @@ void	check_duplicates(int *stack, size_t size)
 	size_t	j;
 
 	i = -1;
+	if (size == 1)
+		return ;
 	while (++i < size)
 	{
 		j = i + 1;
