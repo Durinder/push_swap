@@ -12,6 +12,28 @@
 
 #include "checker.h"
 
+char	v_check(char ***input, int n)
+{
+	size_t	i;
+	
+	i = 0;
+	if (ft_strequ(input[0][i], "-v"))
+		ft_error_exit("Error: No int(s) in argument");
+	while (input[0][i + 1])
+	{
+		i++;
+	}
+	if (ft_strequ(input[0][i], "-v"))
+	{
+		if (n == 1)
+			ft_strdel(&input[0][i]);
+		else
+			input[0][i] = NULL;
+		return (1);
+	}
+	return (0);
+}
+
 void	visualize(t_stacks *stacks)
 {
 	size_t	i;

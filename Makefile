@@ -18,7 +18,7 @@ CHECKER_HEADERS = -I checker.h
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 
 PUSH_SWAP = push_swap
-PUSH_SWAP_SRC = push_swap.c
+PUSH_SWAP_SRC = push_swap.c init_stacks.c
 PUSH_SWAP_HEADERS = -I push_swap.h
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 
