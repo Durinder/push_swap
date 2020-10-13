@@ -25,7 +25,7 @@ void	init_b(t_stacks *stacks)
 	stacks->b_size = 0;
 }
 
-size_t	count_elems(char **input, int n)
+size_t	count_elems(char **input, char n)
 {
 	size_t	i;
 

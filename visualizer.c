@@ -12,7 +12,7 @@
 
 #include "checker.h"
 
-char	v_check(char ***input, int n)
+char	v_check(char ***input, char n)
 {
 	size_t	i;
 	
