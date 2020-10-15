@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:48:47 by jhallama          #+#    #+#             */
 /*   Updated: 2019/10/16 13:50:09 by jhallama         ###   ########.fr       */

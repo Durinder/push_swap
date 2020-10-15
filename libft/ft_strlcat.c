@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:55:25 by jhallama          #+#    #+#             */
 /*   Updated: 2019/10/30 19:49:17 by jhallama         ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base_ull.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 12:22:28 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/09 15:52:38 by jhallama         ###   ########.fr       */

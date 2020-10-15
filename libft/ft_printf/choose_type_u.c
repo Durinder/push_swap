@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   choose_type_u.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 13:49:39 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/29 12:55:28 by jhallama         ###   ########.fr       */

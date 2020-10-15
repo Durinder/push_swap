@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:10:44 by jhallama          #+#    #+#             */
 /*   Updated: 2020/02/26 15:15:15 by jhallama         ###   ########.fr       */

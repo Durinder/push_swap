@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 09:43:47 by jhallama          #+#    #+#             */
-/*   Updated: 2019/11/19 12:27:33 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:29:16 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	return_line(char **s, int fd, char **line)
 			s[fd] = tmp;
 			return (1);
 		}
-		len++;
-		if (s[fd][len] == '\0')
+		if (s[fd][++len] == '\0')
 		{
 			*line = ft_strdup(s[fd]);
 			ft_strdel(&s[fd]);

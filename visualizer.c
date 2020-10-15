@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visualizer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 17:39:50 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 17:48:13 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:32:41 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	v_check(char ***input, char n)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (ft_strequ(input[0][i], "-v"))
 		ft_error_exit("Error: No int(s) in argument");

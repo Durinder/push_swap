@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_percentage.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:14:08 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/29 12:55:55 by jhallama         ###   ########.fr       */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_float_round.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:24:29 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/17 12:18:42 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:16:42 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char		*rounding(char *s, int precision)
 {
 	char	*tmp;
 	size_t	carry;
-	int	i;
+	int		i;
 
 	carry = 0;
 	i = 0;
@@ -98,7 +98,7 @@ static char		*integer_assignment(char *integers, const char *decimals,
 		int precision)
 {
 	char	*tmp;
-	int	i;
+	int		i;
 	size_t	carry;
 
 	if ((int)ft_strlen(decimals) <= precision)

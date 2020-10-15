@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_cap_x.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 15:45:53 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/29 12:56:39 by jhallama         ###   ########.fr       */

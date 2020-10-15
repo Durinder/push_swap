@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:54:24 by jhallama          #+#    #+#             */
 /*   Updated: 2020/10/15 16:54:26 by jhallama         ###   ########.fr       */

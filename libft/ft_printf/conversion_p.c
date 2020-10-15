@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_p.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:57:13 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/29 12:55:50 by jhallama         ###   ########.fr       */

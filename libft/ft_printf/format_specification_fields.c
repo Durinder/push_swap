@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   format_specification_fields.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 16:13:01 by jhallama          #+#    #+#             */
 /*   Updated: 2020/01/29 12:56:18 by jhallama         ###   ########.fr       */

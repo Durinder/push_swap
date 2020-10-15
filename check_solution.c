@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_solution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:52:31 by jhallama          #+#    #+#             */
 /*   Updated: 2020/02/27 15:30:24 by jhallama         ###   ########.fr       */
