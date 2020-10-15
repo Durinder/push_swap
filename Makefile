@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhallama <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/21 13:26:51 by jhallama          #+#    #+#              #
-#    Updated: 2020/02/27 18:40:43 by jhallama         ###   ########.fr        #
+#    Created: 2020/10/15 16:54:57 by jhallama          #+#    #+#              #
+#    Updated: 2020/10/15 16:54:59 by jhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(CHECKER) $(PUSH_SWAP)
 
 CHECKER = checker
-CHECKER_SRC = checker.c init_stacks.c read_commands.c check_solution.c swap.c push.c rotate.c visualizer.c
+CHECKER_SRC = checker.c init_stacks.c read_commands.c check_solution.c swap.c push.c rotate.c visualizer.c free_all.c
 CHECKER_HEADERS = -I checker.h
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 
