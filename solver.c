@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 11:33:31 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/19 19:44:05 by jhallama         ###   ########.fr       */
+/*   Created: 2020/10/19 17:03:44 by jhallama          #+#    #+#             */
+/*   Updated: 2020/10/19 19:25:32 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "checker.h"
+#include "push_swap.h"
 
-void	solver(t_stacks *s);
-void	solver_small(t_stacks *s);
-void	redirect(void (*f)(t_stacks *), t_stacks *s, char *cmd);
-void	visualize(t_stacks *stacks);
-#endif
+void	solver(t_stacks *s)
+{
+	if (check_solution(s))
+		return ;
+	if (s->elems <= 3)
+		solver_small(s);
+}
