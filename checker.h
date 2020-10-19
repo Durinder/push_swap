@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:28:21 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 18:28:10 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/19 18:33:55 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "libft/libft.h"
 # include "libft/get_next_line.h"
 # include "libft/ft_printf/ft_printf.h"
-# include <stdlib.h>
 
 typedef struct	s_stacks {
 	int		*a;
