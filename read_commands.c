@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:31:54 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 18:35:39 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/19 16:58:07 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void		read_commands(t_stacks *stacks)
 
 	ret = 0;
 	line = NULL;
-	visualize(stacks);
+	if (stacks->v == 1)
+		visualize(stacks);
 	while ((ret = get_next_line(0, &line) > 0))
 	{
 		if (allowed_commands(line) == 1)
