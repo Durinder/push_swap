@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/19 20:08:23 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/19 20:25:10 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	get_min(int *s)
 	return (min);
 }
 
-void	solver_small(t_stacks *s)
+void		solver_small(t_stacks *s)
 {
 	int	min;
 
