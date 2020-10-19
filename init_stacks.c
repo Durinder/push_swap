@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:53:07 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 15:22:58 by jhallama         ###   ########.fr       */
+/*   Updated: 2020/10/19 21:30:04 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,21 @@ void	check_duplicates(int *stack, size_t size)
 	size_t	i;
 	size_t	j;
 
-	i = -1;
+	i = 0;
 	if (size == 1)
 		return ;
-	while (++i < size)
+	while (i < size - 1)
 	{
 		j = i + 1;
-		while (j <= size)
+		while (j < size)
 		{
-			if (stack[i] == stack[j++])
+			if (stack[i] == stack[j])
+			{
 				ft_error_exit("Error: Duplicate number(s) in input.");
+			}
+			j++;
 		}
+		i++;
 	}
 }
 
