@@ -6,7 +6,7 @@
 #    By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 18:12:05 by jhallama          #+#    #+#              #
-#    Updated: 2020/10/19 19:44:37 by jhallama         ###   ########.fr        #
+#    Updated: 2020/10/22 17:36:44 by jhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CHECKER_HEADERS = -I checker.h
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 
 PUSH_SWAP = push_swap
-PUSH_SWAP_SRC = push_swap.c init_stacks.c check_solution.c redirect.c swap.c push.c rotate.c free_all.c solver.c solver_small.c visualizer.c
+PUSH_SWAP_SRC = push_swap.c init_stacks.c check_solution.c redirect.c swap.c push.c rotate.c free_all.c solver.c solver_small.c solver_medium.c
 PUSH_SWAP_HEADERS = -I push_swap.h
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 
