@@ -6,20 +6,16 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:24:29 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/15 18:16:42 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:45:45 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*rounding(char *s, int precision)
+static char	*rounding(char *s, int precision, int carry, int i)
 {
 	char	*tmp;
-	size_t	carry;
-	int		i;
 
-	carry = 0;
-	i = 0;
 	if (s[precision] >= '5')
 	{
 		carry++;
@@ -29,6 +25,7 @@ static char		*rounding(char *s, int precision)
 	}
 	tmp = ft_strsub(s, 0, precision);
 	while (precision--)
+	{
 		if (carry)
 		{
 			tmp[precision] = s[precision] + 1;
@@ -36,18 +33,20 @@ static char		*rounding(char *s, int precision)
 				tmp[precision] = '0';
 			carry--;
 		}
+	}
 	ft_strdel(&s);
 	return (tmp);
 }
 
-static char		*decimal_assignment(char *s, int precision)
+static char	*decimal_assignment(char *s, int precision)
 {
 	char	*tmp;
-	size_t	i;
+	int		i;
 
 	if ((int)ft_strlen(s) < precision)
 	{
-		if (!(tmp = ft_strnew(precision)))
+		tmp = ft_strnew(precision);
+		if (tmp == NULL)
 			return (NULL);
 		i = 0;
 		while (s[i])
@@ -62,15 +61,16 @@ static char		*decimal_assignment(char *s, int precision)
 		return (tmp);
 	}
 	else
-		return (s = rounding(s, precision));
+		return (s = rounding(s, precision, 0, 0));
 }
 
-static char		*decimal_overflow_assignment(char *s, long long i, size_t carry,
+static char	*decimal_overflow_assignment(char *s, long long i, size_t carry,
 		char *tmp)
 {
 	if (i == -1 || (i == 0 && s[0] == '-'))
 	{
-		if (!(tmp = ft_strnew(ft_strlen(s))))
+		tmp = ft_strnew(ft_strlen(s));
+		if (tmp == NULL)
 			return (NULL);
 		i = 0;
 		if (s[0] == '-')
@@ -94,12 +94,12 @@ static char		*decimal_overflow_assignment(char *s, long long i, size_t carry,
 	return (s);
 }
 
-static char		*integer_assignment(char *integers, const char *decimals,
+static char	*integer_assignment(char *integers, const char *decimals,
 		int precision)
 {
 	char	*tmp;
 	int		i;
-	size_t	carry;
+	int		carry;
 
 	if ((int)ft_strlen(decimals) <= precision)
 		return (integers);
@@ -123,13 +123,13 @@ static char		*integer_assignment(char *integers, const char *decimals,
 	return (integers);
 }
 
-char			*ft_float_round(const char *src, int precision)
+char	*ft_float_round(const char *src, int precision)
 {
 	char	*integers;
 	char	*decimals;
 	char	*result;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	if (precision == -1)
 		precision = 6;

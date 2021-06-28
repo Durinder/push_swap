@@ -6,11 +6,22 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 16:16:57 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/30 18:36:23 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:03:48 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	convert(char *string, long nb, short len)
+{
+	if (nb == 0)
+		string[0] = '0';
+	while (nb != 0)
+	{
+		string[len--] = nb % 10 + 48;
+		nb /= 10;
+	}
+}
 
 static short	count_length(int n)
 {
@@ -27,7 +38,7 @@ static short	count_length(int n)
 	return (counter);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	nb;
 	short	len;
@@ -37,20 +48,19 @@ char			*ft_itoa(int n)
 	len = count_length(nb);
 	if (n < 0)
 	{
-		if (!(string = (char *)malloc(len++ + 2)))
+		string = (char *)malloc(len++ + 2);
+		if (string == NULL)
 			return (NULL);
 		string[0] = '-';
 		nb = -nb;
 	}
-	else if (!(string = (char *)malloc(len + 1)))
-		return (NULL);
-	string[len--] = '\0';
-	if (nb == 0)
-		string[0] = '0';
-	while (nb != 0)
+	else
 	{
-		string[len--] = nb % 10 + 48;
-		nb /= 10;
+		string = (char *)malloc(len + 1);
+		if (string == NULL)
+			return (NULL);
 	}
+	string[len--] = '\0';
+	convert(string, nb, len);
 	return (string);
 }
