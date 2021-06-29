@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 12:54:25 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 14:40:53 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:18:55 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static size_t	count_words(char const *s, char c)
 	return (counter + 1);
 }
 
-static char	**assign_arrays(char **new_array)
+static char	**assign_arrays(char **new_array, char const *s, char c,
+		size_t delimiter)
 {
 	size_t	i;
-	size_t	delimiter;
 	size_t	start;
 
 	i = 0;
@@ -65,6 +65,7 @@ static char	**assign_arrays(char **new_array)
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**new_array;
+	size_t	delimiter;
 
 	if (s)
 	{
@@ -72,7 +73,7 @@ char	**ft_strsplit(char const *s, char c)
 		new_array = (char **)malloc(sizeof(char *) * (delimiter + 1));
 		if (new_array == NULL)
 			return (NULL);
-		return (assign_arrays(new_array));
+		return (assign_arrays(new_array, s, c, delimiter));
 	}
 	return (NULL);
 }
