@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:59:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:24:17 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:38:04 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ static short	left_padding(t_fields *fields, char *s, int s_len,
 				fields->result++;
 			}
 		}
-			sign_check = additional_sign_and_space_check(fields, s, s_len,
-					sign_check);
+		sign_check = additional_sign_and_space_check(fields, s, s_len,
+				sign_check);
 	}
 	return (sign_check);
 }
