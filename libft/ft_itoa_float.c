@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:08:04 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/17 19:53:58 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:15:12 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static short	decimal_length(long double n)
 	return (counter);
 }
 
-static char		*decimal_assignment(long double n)
+static char	*decimal_assignment(long double n)
 {
 	char		*decimals;
 	long long	integers;
@@ -36,7 +36,8 @@ static char		*decimal_assignment(long double n)
 	if (n < 0)
 		n = -n;
 	counter = decimal_length(n);
-	if (!(decimals = ft_strnew(counter)))
+	decimals = ft_strnew(counter);
+	if (decimals == NULL)
 		return (NULL);
 	integers = n;
 	n -= (long double)integers;
@@ -51,15 +52,28 @@ static char		*decimal_assignment(long double n)
 	return (decimals);
 }
 
-char			*integer_assignment(long double n)
+static char	*integer_malloc(long double n, short counter)
+{
+	char	*integers;
+
+	if (n < 0)
+		integers = ft_strnew(counter + 2);
+	else
+		integers = ft_strnew(counter + 1);
+	if (integers == NULL)
+		return (NULL);
+	return (integers);
+}
+
+static char	*integer_assignment(long double n)
 {
 	long long	nb;
-	char		*integers;
 	short		counter;
+	char		*integers;
 
 	nb = n;
 	counter = ft_nbrlen(nb);
-	integers = n < 0 ? ft_strnew(counter + 2) : ft_strnew(counter + 1);
+	integers = integer_malloc(n, counter);
 	if (integers == NULL)
 		return (NULL);
 	if (n < 0)
@@ -79,7 +93,7 @@ char			*integer_assignment(long double n)
 	return (integers);
 }
 
-char			*ft_itoa_float(long double n)
+char	*ft_itoa_float(long double n)
 {
 	char		*integers;
 	char		*result;

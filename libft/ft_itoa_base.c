@@ -6,13 +6,13 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:02:08 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/03 13:18:23 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 12:52:10 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*copy_chars(long long n, short counter, char *s, short base)
+static char	*copy_chars(long long n, short counter, char *s, short base)
 {
 	long long	tmp;
 
@@ -41,7 +41,7 @@ static short	count_length(long long n, short base)
 	return (len);
 }
 
-char			*ft_itoa_base(long long n, short base)
+char	*ft_itoa_base(long long n, short base)
 {
 	char		*s;
 	short		counter;
@@ -50,13 +50,15 @@ char			*ft_itoa_base(long long n, short base)
 		return (ft_itoa(n));
 	if (n == 0)
 	{
-		if (!(s = ft_strnew(0)))
+		s = ft_strnew(0);
+		if (s == NULL)
 			return (NULL);
 		s[0] = '0';
 		return (s);
 	}
 	counter = count_length(n, base);
-	if (!(s = ft_strnew(counter)))
+	s = ft_strnew(counter);
+	if (s == NULL)
 		return (NULL);
 	if (n < 0)
 		n = -n;

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:42:00 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/09 15:43:58 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:29:17 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ static short	count_length(unsigned long long n)
 	return (counter);
 }
 
-char			*ft_itoa_ull(unsigned long long nb)
+char	*ft_itoa_ull(unsigned long long nb)
 {
 	short	len;
 	char	*string;
 
 	len = count_length(nb);
-	if (!(string = (char *)malloc(len + 1)))
+	string = (char *)malloc(len + 1);
+	if (string == NULL)
 		return (NULL);
 	string[len--] = '\0';
 	if (nb == 0)

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 11:39:54 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 11:53:49 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 14:51:47 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			while (*temp_haystack++ == *temp_needle++)
 			{
 				if (*temp_needle == '\0')
-					return ((char*)haystack);
+					return ((char *)haystack);
 			}
 		}
 		haystack++;
