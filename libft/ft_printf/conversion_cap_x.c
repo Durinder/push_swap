@@ -6,13 +6,13 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 15:45:53 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:56:39 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:49:46 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		precision_and_print(t_fields *fields, char *s, int s_len)
+static void	precision_and_print(t_fields *fields, char *s, int s_len)
 {
 	if (fields->hash == 1 && ft_strcmp(s, "0") != 0)
 	{
@@ -35,9 +35,9 @@ static void		precision_and_print(t_fields *fields, char *s, int s_len)
 	}
 }
 
-static void		spaces_and_hash(t_fields *fields, char *s, int s_len)
+static void	spaces_and_hash(t_fields *fields, char *s, int s_len)
 {
-	while (s_len + 2 < fields->min ||
+	while (s_len + 2 < fields->min || \
 			(s_len < fields->min && ft_strcmp(s, "0") == 0))
 	{
 		write(1, " ", 1);
@@ -53,7 +53,7 @@ static void		spaces_and_hash(t_fields *fields, char *s, int s_len)
 	}
 }
 
-static void		additional_sign_and_space_check(t_fields *fields, char *s,
+static void	additional_sign_and_space_check(t_fields *fields, char *s,
 		int s_len)
 {
 	if (s_len < fields->min)
@@ -71,16 +71,16 @@ static void		additional_sign_and_space_check(t_fields *fields, char *s,
 	}
 }
 
-static void		left_padding(t_fields *fields, char *s, int s_len, short inc)
+static void	left_padding(t_fields *fields, char *s, int s_len, short inc)
 {
 	if (fields->precision == -1)
 		inc = 1;
-	while (fields->minus == 0 && fields->min > fields->precision + inc &&
+	while (fields->minus == 0 && fields->min > fields->precision + inc && \
 			s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
 		{
-			if (fields->hash == 1 && ft_strcmp(s, "0") != 0 &&
+			if (fields->hash == 1 && ft_strcmp(s, "0") != 0 && \
 					s_len <= fields->min)
 			{
 				write(1, "0x", 2);
@@ -99,11 +99,10 @@ static void		left_padding(t_fields *fields, char *s, int s_len, short inc)
 	}
 }
 
-void			conversion_cap_x(t_fields *fields)
+void	conversion_cap_x(t_fields *fields)
 {
 	char	*s;
 	int		s_len;
-	short	inc;
 
 	if (fields->min_astr == 1)
 		fields->min = va_arg(fields->ap, int);
@@ -111,14 +110,16 @@ void			conversion_cap_x(t_fields *fields)
 		fields->precision = va_arg(fields->ap, int);
 	s = choose_type_x(fields);
 	s_len = ft_strlen(s);
-	left_padding(fields, s, s_len, inc = 0);
+	left_padding(fields, s, s_len, 0);
 	precision_and_print(fields, s, s_len);
 	if (fields->minus == 1)
+	{
 		while (fields->min-- > 0)
 		{
 			write(1, " ", 1);
 			fields->result++;
 		}
+	}
 	if (ft_strcmp(s, "") != 0)
 		ft_strdel(&s);
 }

@@ -6,13 +6,13 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 12:11:12 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:56:07 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:07:06 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		precision_and_print(t_fields *fields, char *s, int s_len,
+static void	precision_and_print(t_fields *fields, char *s, int s_len,
 		short sign)
 {
 	if (sign == 1)
@@ -65,16 +65,18 @@ static short	left_padding(t_fields *fields, char *s, int s_len, int sign)
 	inc = 0;
 	if (fields->precision == -1)
 		inc = 1;
-	while (fields->minus == 0 && fields->min > fields->precision + inc &&
+	while (fields->minus == 0 && fields->min > fields->precision + inc && \
 			s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
+		{
 			while (fields->min > s_len || (s[0] == '-' && fields->min >= s_len))
 			{
 				fields->min--;
 				write(1, "0", 1);
 				fields->result++;
 			}
+		}
 		sign = additional_sign_and_space_check(fields, s, s_len, sign);
 	}
 	return (sign);
@@ -82,8 +84,8 @@ static short	left_padding(t_fields *fields, char *s, int s_len, int sign)
 
 static short	sign_check(t_fields *fields, char *s, int s_len, short sign)
 {
-	if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 ||
-				(fields->zero == 1 && (fields->precision >= fields->min ||
+	if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 || \
+				(fields->zero == 1 && (fields->precision >= fields->min || \
 									fields->precision == -1))))
 	{
 		write(1, "-", 1);
@@ -94,7 +96,7 @@ static short	sign_check(t_fields *fields, char *s, int s_len, short sign)
 	return (sign);
 }
 
-void			conversion_u(t_fields *fields)
+void	conversion_u(t_fields *fields)
 {
 	char	*s;
 	int		s_len;
@@ -111,10 +113,12 @@ void			conversion_u(t_fields *fields)
 	sign = left_padding(fields, s, s_len, sign);
 	precision_and_print(fields, s, s_len, sign);
 	if (fields->minus == 1)
+	{
 		while (fields->min-- > 0)
 		{
 			write(1, " ", 1);
 			fields->result++;
 		}
+	}
 	ft_strdel(&s);
 }

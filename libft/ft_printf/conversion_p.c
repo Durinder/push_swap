@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:57:13 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:55:50 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:04:57 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print(t_fields *fields, char *s)
 {
-	int s_len;
+	int	s_len;
 
 	s_len = ft_strlen(s);
 	while (s_len-- > 0)
@@ -46,7 +46,7 @@ static void	zeroes_and_spaces(t_fields *fields, char *s)
 			fields->result++;
 		}
 	}
-	while (fields->minus == 0 && fields->min - 2 > (int)ft_strlen(s) &&
+	while (fields->minus == 0 && fields->min - 2 > (int)ft_strlen(s) && \
 			fields->min > 2)
 	{
 		fields->min--;
@@ -57,7 +57,7 @@ static void	zeroes_and_spaces(t_fields *fields, char *s)
 	fields->result += 2;
 }
 
-void		conversion_p(t_fields *fields)
+void	conversion_p(t_fields *fields)
 {
 	long	n;
 	char	*s;
@@ -70,12 +70,14 @@ void		conversion_p(t_fields *fields)
 	precision_check(fields, s);
 	print(fields, s);
 	if (fields->minus == 1)
+	{
 		while (fields->min-- - 2 > 0)
 		{
 			write(1, " ", 1);
 			fields->result++;
 		}
-	while (fields->precision != -1 &&
+	}
+	while (fields->precision != -1 && \
 			fields->precision-- - (int)ft_strlen(s) > 0)
 	{
 		write(1, "0", 1);

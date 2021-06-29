@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:15:16 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:55:43 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:45:49 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	zeroes_and_spaces(t_fields *fields)
 	}
 }
 
-void		conversion_c(t_fields *fields)
+void	conversion_c(t_fields *fields)
 {
-	int c;
+	int	c;
 
 	c = va_arg(fields->ap, int);
 	zeroes_and_spaces(fields);

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:14:08 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:55:55 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:05:24 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	zeroes_and_spaces(t_fields *fields)
 	}
 }
 
-void		conversion_percentage(t_fields *fields)
+void	conversion_percentage(t_fields *fields)
 {
 	zeroes_and_spaces(fields);
 	print(fields);

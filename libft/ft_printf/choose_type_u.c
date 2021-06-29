@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 13:49:39 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:55:28 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:44:41 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*choose_more(char *s, t_fields *fields)
 	return (s);
 }
 
-char		*choose_type_u(t_fields *fields)
+char	*choose_type_u(t_fields *fields)
 {
 	char				*s;
 	t_length_type_ouxx	length;

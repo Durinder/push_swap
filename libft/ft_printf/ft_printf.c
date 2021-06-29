@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 16:05:49 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:56:24 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:10:23 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static const char	*choose_conversion(const char *format,
 	return (format++);
 }
 
-static void			initialize_t_fields(t_fields *fields)
+static void	initialize_t_fields(t_fields *fields)
 {
 	fields->hash = 0;
 	fields->zero = 0;
@@ -59,7 +59,7 @@ static void			initialize_t_fields(t_fields *fields)
 	fields->cap_l = 0;
 }
 
-static void			magic(const char *format, t_fields *fields)
+static void	magic(const char *format, t_fields *fields)
 {
 	while (*format)
 	{
@@ -84,7 +84,7 @@ static void			magic(const char *format, t_fields *fields)
 	}
 }
 
-int					ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	size_t		amount_printed;
 	t_fields	*fields;

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 16:13:01 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:56:18 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:09:30 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ const char	*choose_width_and_precision(const char *format, t_fields *fields)
 
 const char	*choose_flags(const char *format, t_fields *fields)
 {
-	while (*format == '#' || *format == '0' || *format == '-' ||
+	while (*format == '#' || *format == '0' || *format == '-' || \
 			*format == '+' || *format == ' ')
 	{
 		if (*format == '#')

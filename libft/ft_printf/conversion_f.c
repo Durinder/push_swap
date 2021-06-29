@@ -6,13 +6,13 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:10:13 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:56:51 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:01:14 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		precision_and_print(t_fields *fields, char *s, int s_len,
+static void	precision_and_print(t_fields *fields, char *s, int s_len,
 		short sign_check)
 {
 	if (sign_check == 1)
@@ -43,8 +43,8 @@ static short	additional_sign_and_space_check(t_fields *fields, char *s,
 	inc = 0;
 	if (fields->precision == -1)
 		inc = 1;
-	if (fields->plus == 1 && s[0] != '-' && fields->zero != 1 && (fields->min ==
-				fields->precision + inc + 1 || s_len + 1 == fields->min))
+	if (fields->plus == 1 && s[0] != '-' && fields->zero != 1 && (fields->min \
+				== fields->precision + inc + 1 || s_len + 1 == fields->min))
 	{
 		write(1, "+", 1);
 		fields->min--;
@@ -73,18 +73,20 @@ static short	left_padding(t_fields *fields, char *s, int s_len,
 	inc = 0;
 	if (fields->precision == -1)
 		inc = 1;
-	while (fields->minus == 0 && fields->min > fields->precision + inc &&
+	while (fields->minus == 0 && fields->min > fields->precision + inc && \
 			s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
+		{
 			while (fields->min > s_len || (s[0] == '-' && fields->min >= s_len))
 			{
 				fields->min--;
 				write(1, "0", 1);
 				fields->result++;
 			}
-		sign_check = additional_sign_and_space_check(fields, s, s_len,
-				sign_check);
+			sign_check = additional_sign_and_space_check(fields, s, s_len,
+					sign_check);
+		}
 	}
 	return (sign_check);
 }
@@ -92,17 +94,17 @@ static short	left_padding(t_fields *fields, char *s, int s_len,
 static short	sign_and_space_check(t_fields *fields, char *s, int s_len,
 		short sign_check)
 {
-	if (fields->plus == 1 && s[0] != '-' && (s_len >= fields->min ||
-				fields->minus == 1 || fields->zero == 1 ||
+	if (fields->plus == 1 && s[0] != '-' && (s_len >= fields->min || \
+				fields->minus == 1 || fields->zero == 1 || \
 				fields->precision >= fields->min))
 	{
 		write(1, "+", 1);
 		fields->min--;
 		fields->result++;
 	}
-	else if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 ||
-				fields->precision >= fields->min || (fields->zero == 1 &&
-					(fields->precision >= fields->min ||
+	else if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 || \
+				fields->precision >= fields->min || (fields->zero == 1 && \
+					(fields->precision >= fields->min || \
 					fields->precision == -1))))
 	{
 		write(1, "-", 1);
@@ -119,7 +121,7 @@ static short	sign_and_space_check(t_fields *fields, char *s, int s_len,
 	return (sign_check);
 }
 
-void			conversion_f(t_fields *fields)
+void	conversion_f(t_fields *fields)
 {
 	char	*s;
 	int		s_len;
@@ -136,10 +138,12 @@ void			conversion_f(t_fields *fields)
 	sign_check = left_padding(fields, s, s_len, sign_check);
 	precision_and_print(fields, s, s_len, sign_check);
 	if (fields->minus == 1)
+	{
 		while (fields->min-- > 0)
 		{
 			write(1, " ", 1);
 			fields->result++;
 		}
+	}
 	ft_strdel(&s);
 }

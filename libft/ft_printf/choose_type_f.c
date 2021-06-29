@@ -6,13 +6,13 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:14:23 by jhallama          #+#    #+#             */
-/*   Updated: 2020/01/29 12:55:14 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:43:53 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*choose_type_f(t_fields *fields)
+char	*choose_type_f(t_fields *fields)
 {
 	char	*s;
 	char	*s_rounded;
