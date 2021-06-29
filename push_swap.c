@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:45:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:25:09 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:36:37 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 		if (input[0] == NULL)
 			ft_error_exit("Error: Empty argument.");
 	}
-	stacks = init_stacks(input, argv, argv);
+	stacks = init_stacks(input, argc, argv);
 	solver(stacks);
 	free_all(NULL, NULL, stacks);
 	return (0);
