@@ -6,7 +6,7 @@
 #    By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/15 18:12:05 by jhallama          #+#    #+#              #
-#    Updated: 2020/10/22 17:36:44 by jhallama         ###   ########.fr        #
+#    Updated: 2021/06/29 17:05:42 by jhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,7 @@ PUSH_SWAP_SRC = push_swap.c init_stacks.c check_solution.c redirect.c swap.c pus
 PUSH_SWAP_HEADERS = -I push_swap.h
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 
-LIBFT = libft/libft.a
-
-FT_PRINTF = libft/ft_printf/ft_printf.a
+LIBRARY = libft/ft_printf/libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -32,32 +30,27 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(LIBFT):
-	@make -C libft/
-
-$(FT_PRINTF):
+$(LIBRARY):
 	@make -C libft/ft_printf/
 
-$(CHECKER): $(LIBFT) $(FT_PRINTF)
+$(CHECKER): $(LIBRARY)
 	@gcc $(FLAGS) -c $(CHECKER_SRC)
-	@gcc $(FLAGS) -o $(CHECKER) $(CHECKER_OBJ) $(CHECKER_HEADERS) $(FT_PRINTF) $(LIBFT)
+	@gcc $(FLAGS) -o $(CHECKER) $(CHECKER_OBJ) $(CHECKER_HEADERS) $(LIBRARY)
 	@echo "Made checker"
 
-$(PUSH_SWAP): $(LIBFT) $(FT_PRINTF)
+$(PUSH_SWAP): $(LIBRARY)
 	@gcc $(FLAGS) -c $(PUSH_SWAP_SRC)
-	@gcc $(FLAGS) -o $(PUSH_SWAP) $(PUSH_SWAP_OBJ) $(PUSH_SWAP_HEADERS) $(FT_PRINTF) $(LIBFT)
+	@gcc $(FLAGS) -o $(PUSH_SWAP) $(PUSH_SWAP_OBJ) $(PUSH_SWAP_HEADERS) $(LIBRARY)
 	@echo "Made push_swap"
 
 clean:
-	@make -C libft/ clean
 	@make -C libft/ft_printf/ clean
 	@rm -f $(CHECKER_OBJ) $(PUSH_SWAP_OBJ)
-	@echo "Cleaned .o files"
+	@echo "Cleaned root .o files"
 
 fclean: clean
-	@make -C libft/ fclean
 	@make -C libft/ft_printf/ fclean
 	@rm -f $(CHECKER) $(PUSH_SWAP)
-	@echo "Cleaned libraries and binary files"
+	@echo "Cleaned root libraries and binary files"
 
 re: fclean all
