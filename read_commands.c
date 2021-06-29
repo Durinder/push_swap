@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:31:54 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/19 16:58:07 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:30:31 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ static void	command_switch(const char *cmd, t_stacks *stacks)
 
 static int	allowed_commands(char *cmd)
 {
-	if (ft_strcmp(cmd, "sa") == 0 || ft_strcmp(cmd, "sb") == 0 ||
-			ft_strcmp(cmd, "ss") == 0 || ft_strcmp(cmd, "pa") == 0 ||
-			ft_strcmp(cmd, "pb") == 0 || ft_strcmp(cmd, "ra") == 0 ||
-			ft_strcmp(cmd, "rb") == 0 || ft_strcmp(cmd, "rr") == 0 ||
-			ft_strcmp(cmd, "rra") == 0 || ft_strcmp(cmd, "rrb") == 0 ||
+	if (ft_strcmp(cmd, "sa") == 0 || ft_strcmp(cmd, "sb") == 0 || \
+			ft_strcmp(cmd, "ss") == 0 || ft_strcmp(cmd, "pa") == 0 || \
+			ft_strcmp(cmd, "pb") == 0 || ft_strcmp(cmd, "ra") == 0 || \
+			ft_strcmp(cmd, "rb") == 0 || ft_strcmp(cmd, "rr") == 0 || \
+			ft_strcmp(cmd, "rra") == 0 || ft_strcmp(cmd, "rrb") == 0 || \
 			ft_strcmp(cmd, "rrr") == 0)
 		return (0);
 	return (1);
 }
 
-void		read_commands(t_stacks *stacks)
+void	read_commands(t_stacks *stacks)
 {
 	int		ret;
 	char	*line;
@@ -80,8 +80,13 @@ void		read_commands(t_stacks *stacks)
 	line = NULL;
 	if (stacks->v == 1)
 		visualize(stacks);
-	while ((ret = get_next_line(0, &line) > 0))
+	while (1)
 	{
+		ret = get_next_line(0, &line);
+		if (ret == 0)
+			break ;
+		if (ret == -1)
+			ft_error_exit("Error: get_next_line returned -1.");
 		if (allowed_commands(line) == 1)
 		{
 			ft_strdel(&line);

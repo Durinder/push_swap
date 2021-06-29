@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:21:35 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/22 17:35:43 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:32:46 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static int	get_cut_off(t_stacks *s)
 	size_t	i;
 	int		cut_off;
 
-	if (!(sorted = ft_memalloc(sizeof(int *) * s->elems - 1)))
+	sorted = ft_memalloc(sizeof(int *) * s->elems - 1);
+	if (sorted == NULL)
 		free_all("Error: Failed to malloc", NULL, s);
 	i = 0;
 	while (i < s->elems)
@@ -56,9 +57,9 @@ static int	get_cut_off(t_stacks *s)
 	return (cut_off);
 }
 
-void		solver_medium(t_stacks *s)
+void	solver_medium(t_stacks *s)
 {
-	int cut_off;
+	int	cut_off;
 
 	cut_off = get_cut_off(s);
 	ft_putnbr(cut_off);

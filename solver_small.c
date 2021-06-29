@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/19 20:25:10 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:33:41 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ static int	get_min(int *s)
 	return (min);
 }
 
-void		solver_small(t_stacks *s)
+void	solver_small(t_stacks *s)
 {
 	int	min;
 
 	if (s->elems == 2)
 		redirect(swap_a, s, "sa");
 	min = get_min(s->a);
-	if ((min == s->a[0] && s->a[1] > s->a[2]) ||
-			(min == s->a[1] && s->a[0] < s->a[2]) ||
+	if ((min == s->a[0] && s->a[1] > s->a[2]) || \
+			(min == s->a[1] && s->a[0] < s->a[2]) || \
 			(min == s->a[2] && s->a[0] > s->a[1]))
 		redirect(swap_a, s, "sa");
 	min = get_min(s->a);

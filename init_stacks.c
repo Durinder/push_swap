@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:53:07 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/19 21:30:04 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:19:27 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init_b(t_stacks *stacks)
 {
 	int	*stack;
 
-	if (!(stack = ft_memalloc(sizeof(int *) * stacks->elems)))
+	stack = ft_memalloc(sizeof(int *) * stacks->elems);
+	if (stack == NULL)
 		ft_error_exit("Failed to malloc for (int *)stack");
 	stacks->b = stack;
 	stacks->a_size = stacks->elems;
@@ -64,13 +65,14 @@ void	check_duplicates(int *stack, size_t size)
 	}
 }
 
-int		*init(int argc, char **input)
+int	*init(int argc, char **input)
 {
 	int		*stack;
 	size_t	i;
 	size_t	j;
 
-	if (!(stack = ft_memalloc(sizeof(int *) * argc - 1)))
+	stack = ft_memalloc(sizeof(int *) * argc - 1);
+	if (stack == NULL)
 		ft_error_exit("Failed to malloc for (int *)stack");
 	i = -1;
 	while (input[++i])
