@@ -18,7 +18,9 @@ LIBFT = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c
 
 LIBFT_SRC = $(addprefix ../, $(LIBFT))
 
-HEADERS = -I ft_printf.h -I ../libft.h
+HEADERS = ft_printf.h ../libft.h
+
+PRECOMPHEAD = $(addsuffix .gch, $(HEADERS))
 
 PRINTF_OBJ = $(PRINTF_SRC:.c=.o)
 
@@ -35,8 +37,8 @@ $(NAME):
 	@echo "Made libftprintf.a"
 
 clean:
-	@/bin/rm -f $(LIBFT_OBJ) $(PRINTF_OBJ)
-	@echo "Cleaned .o files"
+	@/bin/rm -f $(LIBFT_OBJ) $(PRINTF_OBJ) $(PRECOMPHEAD)
+	@echo "Cleaned .o and .gch files"
 
 fclean: clean
 	@/bin/rm -f $(NAME)

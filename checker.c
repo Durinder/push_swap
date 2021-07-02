@@ -53,9 +53,9 @@ int	main(int argc, char **argv)
 	stacks = init_stacks(input, argc, argv);
 	read_commands(stacks);
 	if (check_solution(stacks) == 1)
-		ft_printf("OK");
+		ft_printf("OK\n");
 	else
-		ft_printf("KO");
+		ft_printf("KO\n");
 	free_all(NULL, NULL, stacks);
 	return (0);
 }
