@@ -14,9 +14,18 @@
 # define PUSH_SWAP_H
 # include "checker.h"
 
+typedef struct s_buffer {
+    char    *a;
+    char    *b;
+}   t_buffer;
+
 void	solver(t_stacks *s);
-void	solver_small(t_stacks *s);
+t_stacks	*copy_stacks(t_stacks *src);
+void	solver_small(t_stacks *s, int which, int min);
+void	solver_small_dual(t_stacks *s);
 void	solver_medium(t_stacks *s);
-void	redirect(void (*f)(t_stacks *), t_stacks *s, char *cmd);
+void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd);
+void	redirect_buf(t_stacks *s, int *p, const char *cmd);
+void	execute_buf(t_stacks *s);
 void	visualize(t_stacks *stacks);
 #endif

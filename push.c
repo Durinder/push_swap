@@ -14,7 +14,7 @@
 
 void	push_a(t_stacks *stacks)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < stacks->a_size)
@@ -36,7 +36,7 @@ void	push_a(t_stacks *stacks)
 
 void	push_b(t_stacks *stacks)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < stacks->b_size)

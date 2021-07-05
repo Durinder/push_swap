@@ -29,10 +29,11 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	{
 		stacks->v = v_check(&argv, 0);
 		stacks->a = init(argc, ++argv);
-		stacks->elems = (size_t)argc - 1 - stacks->v;
+		stacks->elems = (argc - 1 - stacks->v);
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
+	stacks->buf = NULL;
 	return (stacks);
 }
 

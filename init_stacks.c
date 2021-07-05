@@ -26,9 +26,9 @@ void	init_b(t_stacks *stacks)
 	stacks->b_size = 0;
 }
 
-size_t	count(char **input, char n)
+int	count(char **input, char n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (input[i])
@@ -42,10 +42,10 @@ size_t	count(char **input, char n)
 	return (i);
 }
 
-void	check_duplicates(int *stack, size_t size)
+void	check_duplicates(int *stack, int size)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (size == 1)
@@ -67,9 +67,9 @@ void	check_duplicates(int *stack, size_t size)
 
 int	*init(int argc, char **input)
 {
-	int		*stack;
-	size_t	i;
-	size_t	j;
+	int	*stack;
+	int	i;
+	int	j;
 
 	stack = ft_memalloc(sizeof(int *) * argc - 1);
 	if (stack == NULL)

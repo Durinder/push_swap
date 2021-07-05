@@ -14,7 +14,7 @@
 
 int	check_solution(t_stacks *stacks)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < stacks->elems - 1)

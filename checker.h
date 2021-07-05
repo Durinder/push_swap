@@ -19,14 +19,15 @@
 typedef struct s_stacks {
 	int		*a;
 	int		*b;
-	size_t	elems;
-	size_t	a_size;
-	size_t	b_size;
+	int		elems;
+	int		a_size;
+	int		b_size;
 	char	v;
+	char	*buf;
 }	t_stacks;
 
 int		*init(int argc, char **input);
-size_t	count(char **input, char n);
+int		count(char **input, char n);
 void	init_b(t_stacks *stacks);
 void	read_commands(t_stacks *stacks);
 int		check_solution(t_stacks *stacks);
@@ -38,8 +39,10 @@ void	rotate_a(t_stacks *stacks);
 void	rotate_b(t_stacks *stacks);
 void	reverse_rotate_a(t_stacks *stacks);
 void	reverse_rotate_b(t_stacks *stacks);
+void	rotate_ab(t_stacks *stacks);
+void	reverse_rotate_ab(t_stacks *stacks);
 void	visualize(t_stacks *stacks);
 char	v_check(char ***input, char n);
-void	check_duplicates(int *stack, size_t size);
+void	check_duplicates(int *stack, int size);
 void	free_all(char *message, char **input, t_stacks *stacks);
 #endif

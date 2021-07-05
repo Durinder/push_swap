@@ -14,8 +14,8 @@
 
 void	rotate_a(t_stacks *stacks)
 {
-	size_t	i;
-	int		tmp;
+	int	i;
+	int	tmp;
 
 	tmp = stacks->a[0];
 	i = 0;
@@ -29,8 +29,8 @@ void	rotate_a(t_stacks *stacks)
 
 void	rotate_b(t_stacks *stacks)
 {
-	size_t	i;
-	int		tmp;
+	int	i;
+	int	tmp;
 
 	tmp = stacks->b[0];
 	i = 0;
@@ -44,8 +44,8 @@ void	rotate_b(t_stacks *stacks)
 
 void	reverse_rotate_a(t_stacks *stacks)
 {
-	size_t	i;
-	int		tmp;
+	int	i;
+	int	tmp;
 
 	tmp = stacks->a[stacks->a_size - 1];
 	i = stacks->a_size - 1;
@@ -59,8 +59,8 @@ void	reverse_rotate_a(t_stacks *stacks)
 
 void	reverse_rotate_b(t_stacks *stacks)
 {
-	size_t	i;
-	int		tmp;
+	int	i;
+	int	tmp;
 
 	tmp = stacks->b[stacks->b_size - 1];
 	i = stacks->b_size - 1;

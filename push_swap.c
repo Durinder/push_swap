@@ -28,7 +28,7 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	else
 	{
 		stacks->a = init(argc, ++argv);
-		stacks->elems = (size_t)argc - 1 - stacks->v;
+		stacks->elems = (argc - 1 - stacks->v);
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);

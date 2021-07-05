@@ -14,7 +14,7 @@
 
 char	v_check(char ***input, char n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (ft_strequ(input[0][i], "-v"))
@@ -36,7 +36,7 @@ char	v_check(char ***input, char n)
 
 void	visualize(t_stacks *stacks)
 {
-	size_t	i;
+	int	i;
 
 	ft_printf("STACK_A     |     STACK_B\n");
 	i = 0;
