@@ -27,6 +27,7 @@ void	free_all(char *message, char **input, t_stacks *stacks)
 	{
 		free(stacks->a);
 		free(stacks->b);
+		free(stacks->buf);
 		free(stacks);
 	}
 	if (message)

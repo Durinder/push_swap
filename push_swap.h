@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 # include "checker.h"
 
+enum operations {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
+
 typedef struct s_buffer {
     char    *a;
     char    *b;
