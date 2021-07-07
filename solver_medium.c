@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   solver_medium.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:21:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:32:46 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:58:39 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push_to_b(t_stacks *s, int co)
+static void	push_to_b(t_stacks *s, int co)
 {
 	while (s->a_size > 3)
 	{
@@ -85,7 +85,6 @@ void	solver_medium(t_stacks *s)
 	int		cut_off;
 
 	cut_off = get_cut_off(s);
-//	ft_putnbr(cut_off);
 	push_to_b(s, cut_off);
 	solver_small_dual(s);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver_small.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:33:41 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:59:21 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	solver_small_dual(t_stacks *s)
 	b_min = get_min_dual(s, 1);
 	solver_small(s, 0, a_min);
 	solver_small(s, 1, b_min);
-
 }
+
 void	solver_small(t_stacks *s, int which, int min)
 {
 	int			*p;
@@ -77,20 +77,3 @@ void	solver_small(t_stacks *s, int which, int min)
 	else
 		redirect_buf(s, p, "rrotate");
 }
-
-/*void	solver_small(t_stacks *s)
-{
-	int	min;
-
-	if (s->elems == 2)
-		redirect(swap_a, s, "sa");
-	min = get_min(s->a);
-	if ((min == s->a[0] && s->a[1] > s->a[2]) || \
-			(min == s->a[1] && s->a[0] < s->a[2]) || \
-			(min == s->a[2] && s->a[0] > s->a[1]))
-		redirect(swap_a, s, "sa");
-	if (min == s->a[1])
-		redirect(rotate_a, s, "ra");
-	else
-		redirect(reverse_rotate_a, s, "rra");
-}*/
