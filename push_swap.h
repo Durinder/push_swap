@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:33:31 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:45:05 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:01:34 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define PUSH_SWAP_H
 # include "checker.h"
 
-void	(*g_operations[11])(t_stacks *stacks) = {
-	sa, sb, ss, ra, rb, rr, rra, rrb, rrr};
+//enum	e_operations {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
+
+//void	(*g_operations[11])(t_stacks *stacks) = {
+//	sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 void		solver(t_stacks *s);
 t_stacks	*copy_stacks(t_stacks *src);
 void		solver_small(t_stacks *s, int which, int min);

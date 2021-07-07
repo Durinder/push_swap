@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:35:16 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:56:37 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:23:35 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,59 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 		add_to_last(s->buffer, cmd);
 }
 
-static int	get_pointer(const char *cmd)
+static void	*get_pointer(const char *cmd)
 {
 	if (ft_strcmp(cmd, "sa") == 0)
-		return (0);
+		return (sa);
 	else if (ft_strcmp(cmd, "sb") == 0)
-		return (1);
+		return (sb);
 	else if (ft_strcmp(cmd, "ss") == 0)
-		return (2);
+		return (ss);
 	else if (ft_strcmp(cmd, "pa") == 0)
-		return (3);
+		return (pa);
 	else if (ft_strcmp(cmd, "pb") == 0)
-		return (4);
+		return (pb);
 	else if (ft_strcmp(cmd, "ra") == 0)
-		return (5);
+		return (ra);
 	else if (ft_strcmp(cmd, "rb") == 0)
-		return (6);
+		return (rb);
 	else if (ft_strcmp(cmd, "rr") == 0)
-		return (7);
+		return (rr);
 	else if (ft_strcmp(cmd, "rra") == 0)
-		return (8);
+		return (rra);
 	else if (ft_strcmp(cmd, "rrb") == 0)
-		return (9);
+		return (rrb);
 	else if (ft_strcmp(cmd, "rrr") == 0)
-		return (10);
+		return (rrr);
 	ft_error_exit("Error: invalid command.");
 	exit(0);
 }
 
+/*static void	init_operation_pointers()
+{
+	g_operations[0] = sa;
+	g_operations[1] = sb;
+	g_operations[2] = ss;
+	g_operations[3] = pa;
+	g_operations[4] = pb;
+	g_operations[5] = ra;
+	g_operations[6] = rb;
+	g_operations[7] = rr;
+	g_operations[8] = rra;
+	g_operations[9] = rrb;
+	g_operations[10] = rrr;
+}*/
+
 void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd)
 {
+//	void	(*g_operations[11])(t_stacks *stacks) = {
+//sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
+	
 	ft_printf("%s\n", cmd);
 	if (f != NULL)
 		f(s);
 	else
-		redirect((void *)g_operations[get_pointer(cmd)], s, cmd);
+		redirect(get_pointer(cmd), s, cmd);
 	if (check_solution(s))
 	{
 		free_all(NULL, NULL, s);

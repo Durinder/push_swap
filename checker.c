@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:45:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:09:29 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:07:36 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
-	stacks->a_buf = NULL;
-	stacks->b_buf = NULL;
-	stacks->both_buf = NULL;
-	stacks->buf_order = NULL;
+	stacks->buffer->cmd = NULL;
+	stacks->buffer->next = NULL;
 	return (stacks);
 }
 

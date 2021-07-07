@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:59:21 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:17:57 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	get_min_dual(t_stacks *s, int which)
 	int		min;
 	size_t	tmp;
 
+	min = 0;
 	if (which == 0)
 	{
 		tmp = s->a_size;
@@ -44,6 +45,8 @@ static int	get_min_dual(t_stacks *s, int which)
 		tmp = s->b_size;
 		min = get_min(s->b, tmp);
 	}
+	else
+		ft_error_exit("Error: no stack defined.");
 	return (min);
 }
 
@@ -62,12 +65,15 @@ void	solver_small(t_stacks *s, int which, int min)
 {
 	int			*p;
 
+	p = NULL;
 	if (which == -1)
 		min = get_min(s->a, s->a_size);
 	else if (which == 0)
 		p = s->a;
 	else if (which == 1)
 		p = s->b;
+	else
+		ft_error_exit("Error: no stack defined.");
 	if ((min == p[0] && p[1] > p[2]) || \
 			(min == p[1] && p[0] < p[2]) || \
 			(min == p[2] && p[0] > p[1]))

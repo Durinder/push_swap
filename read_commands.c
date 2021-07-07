@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:31:54 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:30:31 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:07:42 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 static void	command_switch_rotates(const char *cmd, t_stacks *stacks)
 {
 	if (ft_strcmp(cmd, "rr") == 0)
-	{
-		rotate_a(stacks);
-		rotate_b(stacks);
-	}
+		rr(stacks);
 	else if (ft_strcmp(cmd, "ra") == 0)
-		rotate_a(stacks);
+		ra(stacks);
 	else if (ft_strcmp(cmd, "rb") == 0)
-		rotate_b(stacks);
+		rb(stacks);
 	else if (ft_strcmp(cmd, "rrr") == 0)
 	{
 		if (stacks->a_size > 1)
-			reverse_rotate_a(stacks);
+			rra(stacks);
 		if (stacks->b_size > 1)
-			reverse_rotate_b(stacks);
+			rrb(stacks);
 	}
 	else if (ft_strcmp(cmd, "rra") == 0 && stacks->a_size > 1)
-		reverse_rotate_a(stacks);
+		rra(stacks);
 	else if (ft_strcmp(cmd, "rrb") == 0 && stacks->b_size > 1)
-		reverse_rotate_b(stacks);
+		rrb(stacks);
 }
 
 static void	command_switch(const char *cmd, t_stacks *stacks)
@@ -43,19 +40,19 @@ static void	command_switch(const char *cmd, t_stacks *stacks)
 		if (cmd[1] == 's' && cmd[2] == '\0')
 		{
 			if (stacks->a_size > 1)
-				swap_a(stacks);
+				sa(stacks);
 			if (stacks->b_size > 1)
-				swap_b(stacks);
+				sb(stacks);
 		}
 		else if (cmd[1] == 'a' && cmd[2] == '\0' && stacks->a_size > 1)
-			swap_a(stacks);
+			sa(stacks);
 		else if (cmd[1] == 'b' && cmd[2] == '\0' && stacks->b_size > 1)
-			swap_b(stacks);
+			sb(stacks);
 	}
 	else if (ft_strcmp(cmd, "pa") == 0 && stacks->b_size > 0)
-		push_a(stacks);
+		pa(stacks);
 	else if (ft_strcmp(cmd, "pb") == 0 && stacks->a_size > 0)
-		push_b(stacks);
+		pb(stacks);
 	command_switch_rotates(cmd, stacks);
 }
 

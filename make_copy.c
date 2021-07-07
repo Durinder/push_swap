@@ -30,6 +30,7 @@ t_stacks	*copy_stacks(t_stacks *src)
 	cpy->elems = src->elems;
 	cpy->a_size = src->a_size;
 	cpy->b_size = src->b_size;
-	cpy->buf = NULL;
+	cpy->buffer->cmd = NULL;
+	cpy->buffer->next = NULL;
 	return (cpy);
 }

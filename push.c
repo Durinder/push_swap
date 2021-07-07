@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:57:44 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 17:53:12 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:09:25 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	push_a(t_stacks *stacks)
+void	pa(t_stacks *stacks)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ void	push_a(t_stacks *stacks)
 	stacks->b_size--;
 }
 
-void	push_b(t_stacks *stacks)
+void	pb(t_stacks *stacks)
 {
 	int	i;
 

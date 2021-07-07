@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:21:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:58:39 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:26:01 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@ static void	push_to_b(t_stacks *s, int co)
 {
 	while (s->a_size > 3)
 	{
+		ft_putnbr(s->a_size);
 		while (s->a[0] > co && s->a_size > 3)
+		{
+			ft_printf("push");
 			redirect_buf(s, s->b, "push");
+		}
 		if (s->a[1] > co)
 		{
+			ft_printf("rotate");
 			if (s->b[0] > s->b[1])
 				redirect_buf(s, NULL, "rr");
 			else
@@ -27,6 +32,7 @@ static void	push_to_b(t_stacks *s, int co)
 		}
 		else
 		{
+			ft_printf("reverse_rotate");
 			if (s->b[1] > s->b[0])
 				redirect_buf(s, NULL, "rrr");
 			else
@@ -85,6 +91,9 @@ void	solver_medium(t_stacks *s)
 	int		cut_off;
 
 	cut_off = get_cut_off(s);
-	push_to_b(s, cut_off);
+	ft_putnbr(cut_off);
+	ft_printf("apua");
+	push_to_b(s, cut_off); // FIX
+	ft_printf("testi");
 	solver_small_dual(s);
 }

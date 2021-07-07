@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 12:26:59 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:12:11 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:09:08 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ss(t_stacks *stacks)
 	sb(stacks);
 }
 
-void	rrr(t_stacks *stacks)
+void	rr(t_stacks *stacks)
 {
 	ra(stacks);
 	rb(stacks);
