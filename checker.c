@@ -33,7 +33,10 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
-	stacks->buf = NULL;
+	stacks->a_buf = NULL;
+	stacks->b_buf = NULL;
+	stacks->both_buf = NULL;
+	stacks->buf_order = NULL;
 	return (stacks);
 }
 

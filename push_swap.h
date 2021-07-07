@@ -16,11 +16,6 @@
 
 enum operations {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 
-typedef struct s_buffer {
-    char    *a;
-    char    *b;
-}   t_buffer;
-
 void	solver(t_stacks *s);
 t_stacks	*copy_stacks(t_stacks *src);
 void	solver_small(t_stacks *s, int which, int min);

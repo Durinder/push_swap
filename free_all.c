@@ -14,7 +14,8 @@
 
 void	free_all(char *message, char **input, t_stacks *stacks)
 {
-	size_t	i;
+	size_t		i;
+	t_buffer	*cur;
 
 	i = 0;
 	if (input)
@@ -27,7 +28,10 @@ void	free_all(char *message, char **input, t_stacks *stacks)
 	{
 		free(stacks->a);
 		free(stacks->b);
-		free(stacks->buf);
+		cur = stacks->buffer;
+		while (cur->next != NULL)
+			free(stacks->buffer->cmd);
+			cur = stacks->buffer->next;
 		free(stacks);
 	}
 	if (message)

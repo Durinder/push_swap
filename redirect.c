@@ -12,29 +12,23 @@
 
 #include "push_swap.h"
 
-static void	choose_operation(t_stacks *s, char *cmd1, char *cmd2)
+/*static int	check_optimization(t_stacks *s, char **cmd, int i, char needle[])
 {
-}
-
-static int	check_optimization(t_stacks *s, char **cmd, int i, char *line)
-{
-	char	needle[4];
-
 	if (ft_strcmp(cmd[i], "sa") == 0)
-		needle = "sb\0\0";
+		needle = ft_strdup("sa\n");
 	if (ft_strcmp(cmd[i], "sb") == 0)
-		needle = "sa\0\0";
+		needle = ft_strdup("sb\n");
 	if (ft_strcmp(cmd[i], "ra") == 0)
-		needle = "rb\0\0";
+		needle = ft_strdup("ra\n");
 	if (ft_strcmp(cmd[i], "rb") == 0)
-		needle = "ra\0\0";
+		needle = ft_strdup("ra\n");
 	if (ft_strcmp(cmd[i], "rra") == 0)
 		needle = "rrb\0";
 	if (ft_strcmp(cmd[i], "rrb") == 0)
 		needle = "rra\0";
 	while (++i < s->elems)
 	{
-
+		
 	}
 }
 
@@ -49,8 +43,11 @@ void	execute_buf(t_stacks *s)
 	while (i + 1 < s->elems)
 	{
 		j = 0;
-		if (cmd[i][0] == 's' && cmd [i][1] != 's')
-			j = check_optimization(s, cmd, i, cmd[i]);
+		if (ft_strcmp(cmd[i], "sa\n") == 0)
+		{
+			j = check_optimization(s, cmd, i, "sb\n");
+				replace_buf_line(s->buf, i, "ss\n", j);
+		}
 		else if (cmd[i][0] == 'r' && cmd[i][1] != 'r')
 			j = check_optimization(s, cmd, i, cmd[i][1]);
 		else if (ft_strcmp(cmd[i], "rra") == 0 || ft_strcmp(cmd[i], "rrb") == 0)
@@ -58,6 +55,34 @@ void	execute_buf(t_stacks *s)
 		choose_operation(s, commands[i], commands[j]);
 		i++;
 	}
+}*/
+
+static void	execute_buf(t_stacks *s)
+{
+	int		i;
+	char	*p;
+
+	i = 0;
+	while (s->buf_order[i] != '\0');
+	{
+		if (s->buf_order == 'a')
+			p = s->a_buf;
+		else if (s->buf_order == 'b')
+			p = s->b_buf;
+		else if (s->buf_order == 'c')
+			p = s->both_buf;
+	}
+}
+
+void	optimize(t_stacks *s)
+{
+	
+}
+
+static void	write_buf(t_stacks *s, char *p, char *cmd, char c)
+{
+	ft_strjoin(s->buf_order, c);
+	ft_strjoin(p, cmd);
 }
 
 void	redirect_buf(t_stacks *s, int *p, const char *cmd)
@@ -65,27 +90,27 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 	if (p == s->a)
 	{
 		if (ft_strcmp(cmd, "switch") == 0)
-			ft_strjoin(s->buf, "sa\n");
+			write_buf(s, s->a_buf, "sa\n", 'a');
 		if (ft_strcmp(cmd, "push") == 0)
-			ft_strjoin(s->buf, "pa\n");
+			write_buf(s, s->a_buf, "pa\n", 'a');
 		if (ft_strcmp(cmd, "rotate") == 0)
-			ft_strjoin(s->buf, "ra\n");
+			write_buf(s, s->a_buf, "ra\n", 'a');
 		if (ft_strcmp(cmd, "rrotate") == 0)
-			ft_strjoin(s->buf, "rra\n");
+			write_buf(s, s->a_buf, "rra\n", 'a');
 	}
 	else if (p == s->b)
 	{
 		if (ft_strcmp(cmd, "switch") == 0)
-			ft_strjoin(s->buf, "sb\n");
+			write_buf(s, s->b_buf, "sb\n", 'b');
 		if (ft_strcmp(cmd, "push") == 0)
-			ft_strjoin(s->buf, "pb\n");
+			write_buf(s, s->b_buf, "pb\n", 'b');
 		if (ft_strcmp(cmd, "rotate") == 0)
-			ft_strjoin(s->buf, "rb\n");
+			write_buf(s, s->b_buf, "rb\n", 'b');
 		if (ft_strcmp(cmd, "rrotate") == 0)
-			ft_strjoin(s->buf, "rrb\n");
+			write_buf(s, s->b_buf, "rrb\n", 'b');
 	}
 	else if (p == NULL)
-		ft_strjoin(s->buf, cmd);
+		write_buf(s, s->both_buf, cmd, 'c');
 }
 
 void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd)

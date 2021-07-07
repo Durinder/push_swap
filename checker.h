@@ -16,14 +16,19 @@
 # include "libft/get_next_line.h"
 # include "libft/ft_printf/ft_printf.h"
 
+typedef struct s_buffer {
+	char				*cmd;
+	struct	s_buffer	*next;
+}	t_buffer;
+
 typedef struct s_stacks {
-	int		*a;
-	int		*b;
-	int		elems;
-	int		a_size;
-	int		b_size;
-	char	v;
-	char	*buf;
+	int				*a;
+	int				*b;
+	int				elems;
+	int				a_size;
+	int				b_size;
+	char			v;
+	struct s_buffer	*buffer;
 }	t_stacks;
 
 int		*init(int argc, char **input);
