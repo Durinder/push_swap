@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 18:01:26 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/27 18:33:40 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:11:22 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	rotate_a(t_stacks *stacks)
+void	ra(t_stacks *stacks)
 {
 	int	i;
 	int	tmp;
@@ -27,7 +27,7 @@ void	rotate_a(t_stacks *stacks)
 	stacks->a[i] = tmp;
 }
 
-void	rotate_b(t_stacks *stacks)
+void	rb(t_stacks *stacks)
 {
 	int	i;
 	int	tmp;
@@ -42,7 +42,7 @@ void	rotate_b(t_stacks *stacks)
 	stacks->b[i] = tmp;
 }
 
-void	reverse_rotate_a(t_stacks *stacks)
+void	rra(t_stacks *stacks)
 {
 	int	i;
 	int	tmp;
@@ -57,7 +57,7 @@ void	reverse_rotate_a(t_stacks *stacks)
 	stacks->a[0] = tmp;
 }
 
-void	reverse_rotate_b(t_stacks *stacks)
+void	rrb(t_stacks *stacks)
 {
 	int	i;
 	int	tmp;

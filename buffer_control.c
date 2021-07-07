@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   buffer_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:54:53 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:11:31 by jhallama         ###   ########.fr       */
+/*   Created: 2021/07/07 11:53:23 by jhallama          #+#    #+#             */
+/*   Updated: 2021/07/07 13:50:03 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	sa(t_stacks *stacks)
+void	add_to_last(t_buffer *head, char *cmd)
 {
-	int	tmp;
+	t_buffer	*cur;
+	t_buffer	*new;
 
-	tmp = stacks->a[0];
-	stacks->a[0] = stacks->a[1];
-	stacks->a[1] = tmp;
-}
-
-void	sb(t_stacks *stacks)
-{
-	int	tmp;
-
-	tmp = stacks->b[0];
-	stacks->b[0] = stacks->b[1];
-	stacks->b[1] = tmp;
+	new = ft_memalloc(sizeof(t_buffer));
+	new->cmd = ft_strdup(cmd);
+	new->next = NULL;
+	if (new == NULL)
+		ft_error_exit("Error: failed to mallloc.");
+	cur = head;
+	while (cur->next != NULL)
+		cur = cur->next;
+	cur->next = new;
 }

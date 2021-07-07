@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   operate_both.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:54:53 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 14:11:31 by jhallama         ###   ########.fr       */
+/*   Created: 2021/07/07 12:26:59 by jhallama          #+#    #+#             */
+/*   Updated: 2021/07/07 14:12:11 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	sa(t_stacks *stacks)
+void	ss(t_stacks *stacks)
 {
-	int	tmp;
-
-	tmp = stacks->a[0];
-	stacks->a[0] = stacks->a[1];
-	stacks->a[1] = tmp;
+	sa(stacks);
+	sb(stacks);
 }
 
-void	sb(t_stacks *stacks)
+void	rrr(t_stacks *stacks)
 {
-	int	tmp;
+	ra(stacks);
+	rb(stacks);
+}
 
-	tmp = stacks->b[0];
-	stacks->b[0] = stacks->b[1];
-	stacks->b[1] = tmp;
+void	rrr(t_stacks *stacks)
+{
+	rra(stacks);
+	rrb(stacks);
 }

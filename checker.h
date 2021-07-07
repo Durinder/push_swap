@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:28:21 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:17:35 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:10:51 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "libft/ft_printf/ft_printf.h"
 
 typedef struct s_buffer {
-	char				*cmd;
-	struct	s_buffer	*next;
+	char			*cmd;
+	struct s_buffer	*next;
 }	t_buffer;
 
 typedef struct s_stacks {
@@ -36,16 +36,17 @@ int		count(char **input, char n);
 void	init_b(t_stacks *stacks);
 void	read_commands(t_stacks *stacks);
 int		check_solution(t_stacks *stacks);
-void	swap_a(t_stacks *stacks);
-void	swap_b(t_stacks *stacks);
-void	push_a(t_stacks *stacks);
-void	push_b(t_stacks *stacks);
-void	rotate_a(t_stacks *stacks);
-void	rotate_b(t_stacks *stacks);
-void	reverse_rotate_a(t_stacks *stacks);
-void	reverse_rotate_b(t_stacks *stacks);
-void	rotate_ab(t_stacks *stacks);
-void	reverse_rotate_ab(t_stacks *stacks);
+void	sa(t_stacks *stacks);
+void	sb(t_stacks *stacks);
+void	ss(t_stacks *stacks);
+void	pa(t_stacks *stacks);
+void	pb(t_stacks *stacks);
+void	ra(t_stacks *stacks);
+void	rb(t_stacks *stacks);
+void	rr(t_stacks *stacks);
+void	rra(t_stacks *stacks);
+void	rrb(t_stacks *stacks);
+void	rrr(t_stacks *stacks);
 void	visualize(t_stacks *stacks);
 char	v_check(char ***input, char n);
 void	check_duplicates(int *stack, int size);
