@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:45:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 15:07:36 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:09:29 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_stacks	*init_stacks(char **input, int argc, char **argv)
 {
 	t_stacks	*stacks;
-
+	
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
 		ft_error_exit("Error: Failed to malloc (t_stacks *)stacks");
@@ -33,6 +33,9 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
+	stacks->buffer = ft_memalloc(sizeof(t_buffer));
+	if (stacks->buffer == NULL)
+		ft_error_exit("Error: Failed to malloc.");
 	stacks->buffer->cmd = NULL;
 	stacks->buffer->next = NULL;
 	return (stacks);

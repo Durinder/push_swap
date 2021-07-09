@@ -12,19 +12,19 @@
 
 #include "push_swap.h"
 
-static int	get_min(int *s, int tmp)
+static int	get_min(int *s, int size)
 {
 	int	min;
 	int	i;
 
 	min = s[0];
 	i = 0;
-	while (tmp > 0)
+	while (size > 0)
 	{
-		tmp--;
-		i++;
 		if (min > s[i])
 			min = s[i];
+		size--;
+		i++;
 	}
 	return (min);
 }
@@ -63,21 +63,19 @@ void	solver_small_dual(t_stacks *s)
 
 void	solver_small(t_stacks *s, int which, int min)
 {
-	int			*p;
+	int		*p;
 
-	p = NULL;
 	if (which == -1)
 		min = get_min(s->a, s->a_size);
-	else if (which == 0)
+	if (which <= 0)
 		p = s->a;
-	else if (which == 1)
-		p = s->b;
 	else
-		ft_error_exit("Error: no stack defined.");
+		p = s->b;
+	ft_putnbr(min);
 	if ((min == p[0] && p[1] > p[2]) || \
 			(min == p[1] && p[0] < p[2]) || \
 			(min == p[2] && p[0] > p[1]))
-		redirect_buf(s, p, "switch");
+			redirect_buf(s, p, "switch");
 	if (min == p[1])
 		redirect_buf(s, p, "rotate");
 	else

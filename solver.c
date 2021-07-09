@@ -14,14 +14,22 @@
 
 void	solver(t_stacks *s)
 {
+	t_stacks	*cpy;
+	t_buffer	*head;
+
 	if (check_solution(s))
 		return ;
 	if (s->elems == 2)
-		redirect(sa, s, "sa");
-	if (s->elems <= 3)
-		solver_small(s, -1, 0);
-	else if (s->elems <= 6)
-		solver_medium(s);
+		redirect(sa, s, "sa", 1);
+	cpy = copy_stacks(s);
+	head = cpy->buffer;
+	if (cpy->elems <= 3)
+		solver_small(cpy, -1, 0);
+	else if (cpy->elems <= 6)
+		solver_medium(cpy);
 	ft_printf("testi");
+	s->buffer = cpy->buffer;
+//	free_all(NULL, NULL, cpy);
+	ft_printf("\n\nbuf:%s", head->cmd);
 	execute_buf(s);
 }

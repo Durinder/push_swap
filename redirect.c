@@ -17,27 +17,29 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 	if (p == s->a)
 	{
 		if (ft_strcmp(cmd, "switch") == 0)
-			add_to_last(s->buffer, "sa");
+			add_to_last(s, "sa");
 		if (ft_strcmp(cmd, "push") == 0)
-			add_to_last(s->buffer, "pa");
+			add_to_last(s, "pa");
 		if (ft_strcmp(cmd, "rotate") == 0)
-			add_to_last(s->buffer, "ra");
+			add_to_last(s, "ra");
 		if (ft_strcmp(cmd, "rrotate") == 0)
-			add_to_last(s->buffer, "rra");
+			add_to_last(s, "rra");
 	}
 	else if (p == s->b)
 	{
 		if (ft_strcmp(cmd, "switch") == 0)
-			add_to_last(s->buffer, "sb");
+			add_to_last(s, "sb");
 		if (ft_strcmp(cmd, "push") == 0)
-			add_to_last(s->buffer, "pb");
+			add_to_last(s, "pb");
 		if (ft_strcmp(cmd, "rotate") == 0)
-			add_to_last(s->buffer, "rb");
+			add_to_last(s, "rb");
 		if (ft_strcmp(cmd, "rrotate") == 0)
-			add_to_last(s->buffer, "rrb");
+			add_to_last(s, "rrb");
 	}
 	else if (p == NULL)
-		add_to_last(s->buffer, cmd);
+	{
+		add_to_last(s, cmd);
+	}
 }
 
 static void	*get_pointer(const char *cmd)
@@ -83,19 +85,20 @@ static void	*get_pointer(const char *cmd)
 	g_operations[10] = rrr;
 }*/
 
-void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd)
+void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print)
 {
 //	void	(*g_operations[11])(t_stacks *stacks) = {
 //sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 	
-	ft_printf("%s\n", cmd);
+	if (print)
+		ft_printf("%s\n", cmd);
 	if (f != NULL)
 		f(s);
 	else
-		redirect(get_pointer(cmd), s, cmd);
+		redirect(get_pointer(cmd), s, cmd, print);
 	if (check_solution(s))
 	{
-		free_all(NULL, NULL, s);
+//		free_all(NULL, NULL, s);
 		exit(0);
 	}
 }

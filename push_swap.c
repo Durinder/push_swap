@@ -32,6 +32,9 @@ static t_stacks	*init_stacks(char **input, int argc, char **argv)
 	}
 	check_duplicates(stacks->a, stacks->elems);
 	init_b(stacks);
+	stacks->buffer = ft_memalloc(sizeof(t_buffer));
+	if (stacks->buffer == NULL)
+		ft_error_exit("Error: Failed to malloc.");
 	stacks->buffer->cmd = NULL;
 	stacks->buffer->next = NULL;
 	return (stacks);
