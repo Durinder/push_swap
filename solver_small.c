@@ -28,7 +28,7 @@ static int	get_min(int *s, int size)
 	}
 	return (min);
 }
-
+/*
 static int	get_min_dual(t_stacks *s, int which)
 {
 	int		min;
@@ -49,35 +49,53 @@ static int	get_min_dual(t_stacks *s, int which)
 		ft_error_exit("Error: no stack defined.");
 	return (min);
 }
-
+*/
 void	solver_small_dual(t_stacks *s)
 {
-	int	a_min;
-	int	b_min;
+//	int	a_min;
+//	int	b_min;
 
-	a_min = get_min_dual(s, 0);
-	b_min = get_min_dual(s, 1);
-	solver_small(s, 0, a_min);
-	solver_small(s, 1, b_min);
+//	a_min = get_min_dual(s, 0);
+//	b_min = get_min_dual(s, 1);
+	solver_small_a(s);
+	solver_small_b(s);
 }
 
-void	solver_small(t_stacks *s, int which, int min)
+void	solver_small_b(t_stacks *s)
 {
 	int		*p;
+	int		min;
 
-	if (which == -1)
-		min = get_min(s->a, s->a_size);
-	if (which <= 0)
-		p = s->a;
-	else
-		p = s->b;
-	ft_putnbr(min);
+	min = get_min(s->b, s->b_size);
+	p = s->b;
+	if (s->b_size == 2 && p[0] < p[1])
+	{
+		redirect_buf(s, p, "switch");
+		return ;
+	}
+	if ((min == p[0] && p[1] < p[2]) || \
+			(min == p[1] && p[0] > p[2]) || \
+			(min == p[2] && p[0] < p[1]))
+			redirect_buf(s, p, "switch");
+	if (min == p[0])
+		redirect_buf(s, p, "rotate");
+	else if (min == p[1])
+		redirect_buf(s, p, "rrotate");
+}
+
+void	solver_small_a(t_stacks *s)
+{
+	int		*p;
+	int		min;
+
+	min = get_min(s->a, s->a_size);
+	p = s->a;
 	if ((min == p[0] && p[1] > p[2]) || \
 			(min == p[1] && p[0] < p[2]) || \
 			(min == p[2] && p[0] > p[1]))
 			redirect_buf(s, p, "switch");
 	if (min == p[1])
 		redirect_buf(s, p, "rotate");
-	else
+	else if (min == p[2])
 		redirect_buf(s, p, "rrotate");
 }

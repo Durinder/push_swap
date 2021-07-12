@@ -15,7 +15,7 @@
 void	free_all(char *message, char **input, t_stacks *stacks)
 {
 	size_t		i;
-//	t_buffer	*cur;
+	t_buffer	*tmp;
 
 	i = 0;
 	if (input)
@@ -28,12 +28,14 @@ void	free_all(char *message, char **input, t_stacks *stacks)
 	{
 		free(stacks->a);
 		free(stacks->b);
-//		cur = stacks->buffer;
-//		while (cur->next != NULL)
-//		{
-//			free(stacks->buffer->cmd);
-//			cur = cur->next; //TARKISTA
-//		}
+		if (stacks->buffer)
+			while (stacks->buffer != NULL)
+			{
+				free(stacks->buffer->cmd);
+				tmp = stacks->buffer;
+				stacks->buffer = stacks->buffer->next;
+				free(tmp);
+			}
 		free(stacks);
 	}
 	if (message)

@@ -40,6 +40,7 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 	{
 		add_to_last(s, cmd);
 	}
+//	ft_printf("%s\n", cmd);
 }
 
 static void	*get_pointer(const char *cmd)
@@ -96,9 +97,9 @@ void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print)
 		f(s);
 	else
 		redirect(get_pointer(cmd), s, cmd, print);
-	if (check_solution(s))
-	{
-//		free_all(NULL, NULL, s);
-		exit(0);
-	}
+//	if (check_solution(s))
+//	{
+//		ft_printf("solved!\n");
+//		exit(0);
+//	}
 }

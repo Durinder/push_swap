@@ -16,28 +16,18 @@ static void	push_to_b(t_stacks *s, int co)
 {
 	while (s->a_size > 3)
 	{
-		ft_putnbr(s->a_size);
-		while (s->a[0] > co && s->a_size > 3)
+		if (s->a[0] < co)
 		{
 //			ft_printf("push");
 			redirect_buf(s, s->b, "push");
+			continue ;
 		}
-		if (s->a[1] > co)
-		{
-//			ft_printf("rotate");
-			if (s->b[0] > s->b[1])
-				redirect_buf(s, NULL, "rr");
-			else
-				redirect_buf(s, s->a, "rotate");
-		}
+		else if (s->a[1] < co)
+			redirect_buf(s, s->a, "rotate");
+		else if (s->a[s->a_size - 1] < 0)
+			redirect_buf(s, s->a, "rrotate");
 		else
-		{
-//			ft_printf("reverse_rotate");
-			if (s->b[1] > s->b[0])
-				redirect_buf(s, NULL, "rrr");
-			else
-				redirect_buf(s, s->a, "rrotate");
-		}
+			redirect_buf(s, s->a, "rotate");
 	}
 }
 
@@ -81,7 +71,7 @@ static int	get_cut_off(t_stacks *s)
 		i++;
 	}
 	sort_array(&sorted, s->elems);
-	cut_off = sorted[2];
+	cut_off = sorted[s->elems - 3];
 	free(sorted);
 	return (cut_off);
 }
@@ -91,9 +81,9 @@ void	solver_medium(t_stacks *s)
 	int		cut_off;
 
 	cut_off = get_cut_off(s);
-	ft_putnbr(cut_off);
-	ft_printf("apua");
+//	ft_putnbr(cut_off);
 	push_to_b(s, cut_off); // FIX
-	ft_printf("testi");
 	solver_small_dual(s);
+	while(s->b_size > 0)
+		add_to_last(s, "pa");
 }
