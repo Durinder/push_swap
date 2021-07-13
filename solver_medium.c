@@ -31,11 +31,11 @@ static void	push_to_b(t_stacks *s, int co)
 	}
 }
 
-static void	sort_array(int **array, size_t elems)
+void	sort_array(int **array, int elems)
 {
-	int		tmp;
-	size_t	i;
-	size_t	j;
+	int	tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < elems - 1)

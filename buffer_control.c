@@ -128,7 +128,7 @@ void	execute_buf(t_stacks *s)
 
 	cur = s->buffer;
 	if (cur == NULL)
-		ft_error_exit("FATAL ERROR");
+		free_all("FATAL ERROR", NULL, s);
 	ret = 0;
 	while (cur->next != NULL)
 	{

@@ -22,13 +22,13 @@ typedef struct s_buffer {
 }	t_buffer;
 
 typedef struct s_stacks {
+	struct s_buffer	*buffer;
 	int				*a;
 	int				*b;
 	int				elems;
 	int				a_size;
 	int				b_size;
 	char			v;
-	struct s_buffer	*buffer;
 }	t_stacks;
 
 int		*init(int argc, char **input);

@@ -140,11 +140,11 @@ char	*ft_float_round(const char *src, int precision)
 	j = 0;
 	while (src[j])
 		j++;
-	decimals = ft_strsub(src, i + 1, j);
+	decimals = ft_strsub(src, i, j);
 	integers = integer_assignment(integers, decimals, precision);
 	decimals = decimal_assignment(decimals, precision);
 	if (decimals[0])
-		integers = ft_strncat(integers, ".", 1);
+		integers = ft_strncat(integers, ".", 0);
 	result = ft_strjoin(integers, decimals);
 	ft_strdel(&integers);
 	ft_strdel(&decimals);

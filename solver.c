@@ -25,6 +25,8 @@ void	solver(t_stacks *s)
 		solver_small_a(s);
 	else if (s->elems <= 6)
 		solver_medium(s);
+	else if (s->elems > 6)
+		solver_high(s);
 //	ft_printf("testi");
 //	*s->buffer = *cpy->buffer;
 //	s->buffer = cpy->buffer;
