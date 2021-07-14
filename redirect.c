@@ -40,6 +40,8 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 	{
 		add_to_last(s, cmd);
 	}
+	else
+		ft_error_exit("Error: incorrect operation");
 //	ft_printf("%s\n", cmd);
 }
 

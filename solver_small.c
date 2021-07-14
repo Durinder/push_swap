@@ -50,18 +50,8 @@ static int	get_min_dual(t_stacks *s, int which)
 	return (min);
 }
 */
-void	solver_small_dual(t_stacks *s)
-{
-//	int	a_min;
-//	int	b_min;
 
-//	a_min = get_min_dual(s, 0);
-//	b_min = get_min_dual(s, 1);
-	solver_small_a(s);
-	solver_small_b(s);
-}
-
-void	solver_small_b(t_stacks *s)
+static void	solver_small_b(t_stacks *s)
 {
 	int		*p;
 	int		min;
@@ -98,4 +88,15 @@ void	solver_small_a(t_stacks *s)
 		redirect_buf(s, p, "rotate");
 	else if (min == p[2])
 		redirect_buf(s, p, "rrotate");
+}
+
+void	solver_small_dual(t_stacks *s)
+{
+//	int	a_min;
+//	int	b_min;
+
+//	a_min = get_min_dual(s, 0);
+//	b_min = get_min_dual(s, 1);
+	solver_small_a(s);
+	solver_small_b(s);
 }

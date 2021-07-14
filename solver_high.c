@@ -76,6 +76,8 @@ void    solver_high(t_stacks *s)
     float median;
 
     median = get_median(s->a, s->a_size);
-    ft_printf("%f\n", median);
     push_to_b(s, median);
+    solver_loop(s);
+    while (s->b_size > 0)
+		add_to_last(s, "pa");
 }
