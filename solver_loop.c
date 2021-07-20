@@ -1,72 +1,40 @@
 #include "push_swap.h"
 
-//for min value which == 0
-//for max value which == 1
-/*
-static int	get_min_or_max(int *s, int size, int which)
-{
-	int	ret;
-	int	i;
+// static int find_displaced(int *slim, t_stacks *s, int *p, int elems)
+// {
+//     int i;
 
-	ret = s[0];
-	i = 0;
-	while (i < size)
-	{
-    	if (which == 0 && ret > s[i])
-			ret = s[i];
-        if (which == 1 && ret < s[i])
-            ret = s[i];
-		i++;
-	}
-	return (ret);
-}
+//     if ((p == s->a && slim[0] == slim[elems - 1] + 1) || \
+//         (p == s->b && slim[0] == slim[elems - 1] - 1))
+//         return (-1);
+//     i = 0;
+//     while ((p == s->a && slim[i] < slim[i + 1]) || \
+//         (p == s->b && slim[i] > slim[i + i]))
+//     {
+//         i++;
+//         if (i == elems)
+//             return (-2);
+//     }
+//     return (i);
+// }
 
-static int check_if_done(t_stacks *s, int *p, int elems)
-{
-    int i;
+// static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
+// {
+//     int dist;
 
-    i = 0;
-//    ft_printf("s->a:%p, s->b:%p, p:%p, elems:%d, p[0]:%d, p[1]:%d\n", s->a, s->b, p, elems, p[0], p[1]);
-    while (i + 1 < elems)
-    {
-        if (p == s->a && p[i] > p[i + 1])
-            return (i);
-        if (p == s->b && p[i] < p[i + 1])
-            return (i);
-        i++;
-    }
-    return (-1);
-}
-*/
-
-static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
-{
-//    int min;
-//    int max;
-//    int dist;
-
-    //min = get_min_or_max(p, elems, 0);
-    //max = get_min_or_max(p, elems, 1);
-//    dist = check_if_done(s, p, elems);
-//   while (dist != -1)
-    {
-//       ft_printf("min:%d, max:%d, dist:%d\n", min, max, dist);
-//        if ((p == s->a && p[0] != max && p[0] > p[1]) || 
-//        (p== s->b && p[0] != min && p[0] < p[1]))
-        if ((dist == 0 && p == s->a && p[0] != max) || (dist == 0 && p == s->b && p[0] != min))
-        {
-//            if ((p == s->a && p[0] == max && p[1] == min) || 
-//            (p == s->b && p[0] == min && p[1] == max))
-//                break ;
-            redirect_buf(s, p, "switch");
-        }
-        else if ((float)dist < (float)elems / 2)
-            redirect_buf(s, p, "rotate");
-        else
-            redirect_buf(s, p, "rrotate");
-        dist = check_if_done(s, p, elems);
-    }
-}
+//     dist = find_displaced(slim, s, p, elems);
+//     while (dist != -2)
+//     {
+//         ft_printf("%d\n", dist);
+//         if (dist == 0)
+//             redirect_buf(s, p, "switch");
+//         else if ((float)dist < (float)elems / 2)
+//             redirect_buf(s, p, "rotate");
+//         else
+//             redirect_buf(s, p, "rrotate");
+//         dist = find_displaced(slim, s, p, elems);
+//     }
+// }
 
 int find_smallest(int *s, int elems, int *cur_min)
 {
@@ -90,6 +58,7 @@ int find_smallest(int *s, int elems, int *cur_min)
         }
         i++;
     }
+    ft_putnbr(ret);
     *cur_min = candidate;
     if (i == elems)
         return (-1);
@@ -124,16 +93,29 @@ int *transform_stack(int *s, int elems)
     return (slim);
 }
 
+void    print_shit(int *s, int elems)
+{
+    int i = 0;
+
+    while (i < elems)
+    {
+        ft_printf("%d\n", s[i]);
+        i++;
+    }
+}
+
 void    solver_loop(t_stacks *s)
 {
     int *slim;
-//   ft_printf("halojaa\n");
+    ft_printf("halojaa\n");
     slim = NULL;
     slim = transform_stack(s->a, s->a_size);
-    solver_looper(slim, s, s->a, s->a_size);
-//    ft_printf("halojaa\n");
+    print_shit(slim, s->a_size);
+    //solver_looper(slim, s, s->a, s->a_size);
+    ft_printf("halojaa\n");
     free(slim);
     slim = transform_stack(s->b, s->b_size);
-    solver_looper(slim, s, s->b, s->b_size);
+    print_shit(slim, s->b_size);
+    //solver_looper(slim, s, s->b, s->b_size);
     free(slim);
 }
