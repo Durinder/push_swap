@@ -1,14 +1,15 @@
 #include "push_swap.h"
+#include "limits.h"
 
 // static int find_displaced(int *slim, t_stacks *s, int *p, int elems)
 // {
 //     int i;
 
-//     if ((p == s->a && slim[0] == slim[elems - 1] + 1) || \
+//     if ((p == s->a && slim[0] == slim[elems - 1] + 1) || 
 //         (p == s->b && slim[0] == slim[elems - 1] - 1))
 //         return (-1);
 //     i = 0;
-//     while ((p == s->a && slim[i] < slim[i + 1]) || \
+//     while ((p == s->a && slim[i] < slim[i + 1]) || 
 //         (p == s->b && slim[i] > slim[i + i]))
 //     {
 //         i++;
@@ -44,6 +45,7 @@ int find_smallest(int *s, int elems, int *cur_min)
 
     i = 0;
     candidate = *cur_min;
+    ret = 0;
     while (i < elems)
     {
         if (candidate == *cur_min && s[i] > *cur_min)
@@ -58,10 +60,7 @@ int find_smallest(int *s, int elems, int *cur_min)
         }
         i++;
     }
-    ft_putnbr(ret);
     *cur_min = candidate;
-    if (i == elems)
-        return (-1);
     return (ret);
 }
 
@@ -72,18 +71,11 @@ int *transform_stack(int *s, int elems)
     int cur_min;
     int min_i;
 
-	slim = ft_memalloc(sizeof(int *) * elems - 1);
+	slim = ft_memalloc(sizeof(int *) * elems);
 	if (slim == NULL)
 		ft_error_exit("Error: Failed to malloc");
-	i = 0;
-    cur_min = s[0];
-	while (i < elems)
-	{
-        if (s[i] < cur_min)
-            cur_min = s[i];
-		i++;
-	}
     i = 0;
+    cur_min = INT_MIN;
     while (i < elems)
     {
         min_i = find_smallest(s, elems, &cur_min);
@@ -107,12 +99,10 @@ void    print_shit(int *s, int elems)
 void    solver_loop(t_stacks *s)
 {
     int *slim;
-    ft_printf("halojaa\n");
     slim = NULL;
     slim = transform_stack(s->a, s->a_size);
     print_shit(slim, s->a_size);
     //solver_looper(slim, s, s->a, s->a_size);
-    ft_printf("halojaa\n");
     free(slim);
     slim = transform_stack(s->b, s->b_size);
     print_shit(slim, s->b_size);
