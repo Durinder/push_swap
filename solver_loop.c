@@ -1,41 +1,49 @@
 #include "push_swap.h"
 #include "limits.h"
 
-// static int find_displaced(int *slim, t_stacks *s, int *p, int elems)
-// {
-//     int i;
+static int find_rule_breaker(int *slim, t_stacks *s, int *p, int elems)
+{
+    int i;
 
-//     if ((p == s->a && slim[0] == slim[elems - 1] + 1) || 
-//         (p == s->b && slim[0] == slim[elems - 1] - 1))
-//         return (-1);
-//     i = 0;
-//     while ((p == s->a && slim[i] < slim[i + 1]) || 
-//         (p == s->b && slim[i] > slim[i + i]))
-//     {
-//         i++;
-//         if (i == elems)
-//             return (-2);
-//     }
-//     return (i);
-// }
+    i = 0;
+    while (i < elems)
+    {
+        if (i == 0)
+        {
+            if ((p == s->a && slim[i] < slim[elems - 1] && slim[i] != 0) || \
+        (p == s->b && slim[i] > slim[elems - 1] && slim[i] != elems - 1)) 
+            return (-1);
+        }
+        else if ((p == s->a && slim[i] < slim[i - 1] && slim[i] != 0) || \
+        (p == s->b && slim[i] > slim[i - i] && slim[i != elems - 1]))
+            return (i - 1);
+        i++;
+    }
+    return (-2);
+}
 
-// static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
-// {
-//     int dist;
+static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
+{
+    int dist;
 
-//     dist = find_displaced(slim, s, p, elems);
-//     while (dist != -2)
-//     {
-//         ft_printf("%d\n", dist);
-//         if (dist == 0)
-//             redirect_buf(s, p, "switch");
-//         else if ((float)dist < (float)elems / 2)
-//             redirect_buf(s, p, "rotate");
-//         else
-//             redirect_buf(s, p, "rrotate");
-//         dist = find_displaced(slim, s, p, elems);
-//     }
-// }
+    dist = find_rule_breaker(slim, s, p, elems);
+    while (dist != -2)
+    {
+        ft_printf("%d\n", dist);
+        if (dist == -1)
+        {
+            redirect_buf(s, p, "rrotate"); //NEED TO MAKE CHANGES TO SLIM AS WELL!!!
+            redirect_buf(s, p, "switch");
+        }
+        else if (dist == 0)
+            redirect_buf(s, p, "switch");
+        else if ((float)dist < (float)elems / 2)
+            redirect_buf(s, p, "rotate");
+        else
+            redirect_buf(s, p, "rrotate");
+        dist = find_rule_breaker(slim, s, p, elems);
+    }
+}
 
 int find_smallest(int *s, int elems, int *cur_min)
 {
@@ -102,10 +110,10 @@ void    solver_loop(t_stacks *s)
     slim = NULL;
     slim = transform_stack(s->a, s->a_size);
     print_shit(slim, s->a_size);
-    //solver_looper(slim, s, s->a, s->a_size);
+    solver_looper(slim, s, s->a, s->a_size);
     free(slim);
     slim = transform_stack(s->b, s->b_size);
-    print_shit(slim, s->b_size);
-    //solver_looper(slim, s, s->b, s->b_size);
+/*     print_shit(slim, s->b_size);
+ */    solver_looper(slim, s, s->b, s->b_size);
     free(slim);
 }
