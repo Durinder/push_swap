@@ -33,7 +33,7 @@ static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
         if (dist == -1)
         {
             redirect_buf(s, p, "rrotate"); //NEED TO MAKE CHANGES TO SLIM AS WELL!!!
-            redirect_buf(s, p, "switch");
+            redirect_buf(s, p, "switch"); //JUST FUCKING CALCULATE MIN AND MAX FROM S!
         }
         else if (dist == 0)
             redirect_buf(s, p, "switch");
