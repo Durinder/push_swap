@@ -1,35 +1,45 @@
 #include "push_swap.h"
-#include "limits.h"
 
-static int find_rule_breaker(int *slim, t_stacks *s, int *p, int elems)
+static int find_rule_breaker(t_stacks *s, int *p, int elems)
 {
     int i;
+    int max;
+    int sorted;
 
-    i = 0;
-    while (i < elems)
+    i = -1;
+    max = INT_MIN;
+    while (++i < elems)
     {
-        if (i == 0)
-        {
-            if ((p == s->a && slim[i] < slim[elems - 1] && slim[i] != 0) || \
-        (p == s->b && slim[i] > slim[elems - 1] && slim[i] != elems - 1)) 
+        if (p[i] > max)
+            max = p[i];
+    }
+    i = 0;
+    while (i + 1 < elems)
+    {
+        sorted = check_sorted_offset(s, p, elems);
+//        ft_printf("sorted:%d\n", sorted);
+        if (sorted == 0)
+            return (-2);
+        else if (sorted > 0)
+            return (sorted);
+        if ((i == 0) && ((p == s->a && p[0] + 1 == p[elems - 1]) || \
+        (p == s->b && p[0] - 1 == p[elems - 1])))
             return (-1);
-        }
-        else if ((p == s->a && slim[i] < slim[i - 1] && slim[i] != 0) || \
-        (p == s->b && slim[i] > slim[i - i] && slim[i != elems - 1]))
-            return (i - 1);
+        if ((p == s->a && p[i] > p[i + 1]) || (p == s->b && p[i] < p[i + 1]))
+            return (i);
         i++;
     }
     return (-2);
 }
 
-static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
+static void solver_looper(t_stacks *s, int *p, int elems)
 {
     int dist;
 
-    dist = find_rule_breaker(slim, s, p, elems);
+    dist = find_rule_breaker(s, p, elems);
     while (dist != -2)
     {
-        ft_printf("%d\n", dist);
+//        ft_printf("%d\n", dist);
         if (dist == -1)
         {
             redirect_buf(s, p, "rrotate"); //NEED TO MAKE CHANGES TO SLIM AS WELL!!!
@@ -41,7 +51,7 @@ static void solver_looper(int *slim, t_stacks *s, int *p, int elems)
             redirect_buf(s, p, "rotate");
         else
             redirect_buf(s, p, "rrotate");
-        dist = find_rule_breaker(slim, s, p, elems);
+        dist = find_rule_breaker(s, p, elems);
     }
 }
 
@@ -87,33 +97,16 @@ int *transform_stack(int *s, int elems)
     while (i < elems)
     {
         min_i = find_smallest(s, elems, &cur_min);
-        slim[min_i] = i;
+        slim[min_i] = i - INT_MIN;
         i++;
     }
     return (slim);
 }
 
-void    print_shit(int *s, int elems)
-{
-    int i = 0;
-
-    while (i < elems)
-    {
-        ft_printf("%d\n", s[i]);
-        i++;
-    }
-}
-
 void    solver_loop(t_stacks *s)
 {
-    int *slim;
-    slim = NULL;
-    slim = transform_stack(s->a, s->a_size);
-    print_shit(slim, s->a_size);
-    solver_looper(slim, s, s->a, s->a_size);
-    free(slim);
-    slim = transform_stack(s->b, s->b_size);
-/*     print_shit(slim, s->b_size);
- */    solver_looper(slim, s, s->b, s->b_size);
-    free(slim);
+    s->a = transform_stack(s->a, s->a_size);
+    solver_looper(s, s->a, s->a_size);
+    s->b = transform_stack(s->b, s->b_size);
+    solver_looper(s, s->b, s->b_size);
 }

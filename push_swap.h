@@ -13,6 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "checker.h"
+# include "limits.h"
 
 //enum	e_operations {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
 
@@ -31,4 +32,5 @@ void		redirect_buf(t_stacks *s, int *p, const char *cmd);
 void		add_to_last(t_stacks *s, const char *cmd);
 void		execute_buf(t_stacks *s);
 void		visualize(t_stacks *stacks);
+int         check_sorted_offset(t_stacks *slim, int *p, int elems);
 #endif

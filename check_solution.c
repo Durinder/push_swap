@@ -11,6 +11,35 @@
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "push_swap.h"
+
+int	check_sorted_offset(t_stacks *slim, int *p, int elems)
+{
+	int	i;
+	int	stop;
+
+	i = 0;
+	while(p[i] != INT_MIN)
+		i++;
+	stop = i;
+	while (1)
+	{
+		if (i + 1 == elems)
+		{
+			if ((p == slim->a && p[i] > p[0]) || (p == slim->b && p[i] < p[0]))
+				return (-1);
+			if (stop == 0)
+				return (0);
+			i = 0;
+		}
+		if (i + 1 == stop)
+			return (i);
+		else if ((p == slim->a && p[i] > p[i + 1]) || (p == slim->b && p[i] < p[i + 1]))
+			return (-1);
+		i++;
+	}
+	return (i);
+}
 
 int	check_solution(t_stacks *stacks)
 {
