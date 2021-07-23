@@ -13,7 +13,7 @@
 #include "checker.h"
 #include "push_swap.h"
 
-int	check_sorted_offset(t_stacks *slim, int *p, int elems)
+int	check_sorted_offset(t_stacks *slim, int *p, int elems) //FIX!!!
 {
 	int	i;
 	int	stop;
@@ -22,6 +22,18 @@ int	check_sorted_offset(t_stacks *slim, int *p, int elems)
 	while(p[i] != INT_MIN)
 		i++;
 	stop = i;
+	if (p == slim->b)
+	{
+		i = 0;
+		stop = 0;
+		while (++i < elems)
+		{
+			if (p[i] > p[i - 1])
+				stop = i;
+		}
+		i = stop;
+	}
+//	ft_printf("%d", stop);
 	while (1)
 	{
 		if (i + 1 == elems)
@@ -32,11 +44,11 @@ int	check_sorted_offset(t_stacks *slim, int *p, int elems)
 				return (0);
 			i = 0;
 		}
-		if (i + 1 == stop)
-			return (i);
-		else if ((p == slim->a && p[i] > p[i + 1]) || (p == slim->b && p[i] < p[i + 1]))
+		else if ((p == slim->a && p[i] > p[i + 1]) || (p == slim->b && p[i] < p[i + 1])) // NOT WORKING!!!
 			return (-1);
 		i++;
+		if (i == stop)
+			return (i);
 	}
 	return (i);
 }

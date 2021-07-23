@@ -1,5 +1,17 @@
 #include "push_swap.h"
 
+
+void    print_shit(int *s, int elems)
+{
+    int i = 0;
+
+    while (i < elems)
+    {
+        ft_printf("%d\n", s[i]);
+        i++;
+    }
+}
+
 static int find_rule_breaker(t_stacks *s, int *p, int elems)
 {
     int i;
@@ -23,7 +35,7 @@ static int find_rule_breaker(t_stacks *s, int *p, int elems)
         else if (sorted > 0)
             return (sorted);
         if ((i == 0) && ((p == s->a && p[0] + 1 == p[elems - 1]) || \
-        (p == s->b && p[0] - 1 == p[elems - 1])))
+        (p == s->b && p[0] == p[elems - 1] + 1)))
             return (-1);
         if ((p == s->a && p[i] > p[i + 1]) || (p == s->b && p[i] < p[i + 1]))
             return (i);
@@ -39,7 +51,9 @@ static void solver_looper(t_stacks *s, int *p, int elems)
     dist = find_rule_breaker(s, p, elems);
     while (dist != -2)
     {
-//        ft_printf("%d\n", dist);
+/*         ft_printf("this to below:%d\n", dist);
+        print_shit(p, elems);
+        ft_printf("\n"); */
         if (dist == -1)
         {
             redirect_buf(s, p, "rrotate"); //NEED TO MAKE CHANGES TO SLIM AS WELL!!!
@@ -107,6 +121,7 @@ void    solver_loop(t_stacks *s)
 {
     s->a = transform_stack(s->a, s->a_size);
     solver_looper(s, s->a, s->a_size);
+//    ft_printf("a done\n");
     s->b = transform_stack(s->b, s->b_size);
     solver_looper(s, s->b, s->b_size);
 }
