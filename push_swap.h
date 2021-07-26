@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "checker.h"
-# include "limits.h"
+//# include "limits.h"
 
 //enum	e_operations {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
 

@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#define INT_MIN 0
 
 
 void    print_shit(int *s, int elems)
@@ -12,62 +13,136 @@ void    print_shit(int *s, int elems)
     }
 }
 
-static int find_rule_breaker(t_stacks *s, int *p, int elems)
+static int worth_or_not(int a, int b, int elems, t_stacks *s, int *p)
 {
-    int i;
-    int max;
-    int sorted;
+    int inside;
 
-    i = -1;
-    max = INT_MIN;
+    inside = 0;
+    while (a + inside != b)
+    {
+        if (a < b)
+            inside++;
+        else
+            inside--;
+    }
+    if (inside < 0)
+        inside = inside * -1 - 1;
+    
+    ft_printf("worth_or_not - a:%d b:%d, %d", a, b, elems - 2 - inside);
+    if ((elems - 2 - inside > inside && p == s->a && ??? || \
+        (elems - 2 - inside < inside && p == s->b && ???)))
+    {
+        ft_putendl("yes");
+        return (1);
+    }
+    else
+    {
+        ft_putendl("no");
+        return (0);
+    }
+}
+
+/* static void compare_values(t_stacks *s, int *p, int elems)
+{
+    int a;
+    int b;
+    int c;
+
+    a = p[elems - 1];
+    b = p[0];
+    c = p[1];
+    if (p == s->a && a > b)
+    {
+        if (worth_or_not(p[0], p[1], elems))
+            return ()
+
+    }
+        return (-1);
+     max = INT_MIN; // 0 = INT_MIN // # DEFINE MAX = INT_MIN + elems - 1;
     while (++i < elems)
     {
         if (p[i] > max)
             max = p[i];
     }
     i = 0;
-    while (i + 1 < elems)
-    {
-        sorted = check_sorted_offset(s, p, elems);
-//        ft_printf("sorted:%d\n", sorted);
-        if (sorted == 0)
-            return (-2);
-        else if (sorted > 0)
-            return (sorted);
-        if ((i == 0) && ((p == s->a && p[0] + 1 == p[elems - 1]) || \
-        (p == s->b && p[0] == p[elems - 1] + 1)))
-            return (-1);
-        if ((p == s->a && p[i] > p[i + 1]) || (p == s->b && p[i] < p[i + 1]))
-            return (i);
-        i++;
-    }
-    return (-2);
-}
+    if ((p == s->a && p[elems - 1] > p[0] && p[elems - 1] != max) || \
+        (p == s->b && p[elems - 1] < p[0] && )
+        return (-1);
+    if ()
+} */
 
 static void solver_looper(t_stacks *s, int *p, int elems)
 {
-    int dist;
+    int sorted;
 
-    dist = find_rule_breaker(s, p, elems);
-    while (dist != -2)
+    sorted = check_sorted_offset(s, p, elems);
+    while (sorted != 0)
     {
-/*         ft_printf("this to below:%d\n", dist);
+        ft_printf("sorted:%d\n", sorted);
         print_shit(p, elems);
-        ft_printf("\n"); */
-        if (dist == -1)
+        if (worth_or_not(p[0], p[1], elems, s, p))
+        {
+            redirect_buf(s, p, "switch");
+            continue ;
+        }
+        if (worth_or_not(p[elems - 1], p[0], elems, s, p))
+            {
+                redirect_buf(s, p, "rrotate");
+                redirect_buf(s, p, "switch");
+                continue ;
+            }
+        if ((float)sorted < (float)elems / 2)
+            redirect_buf(s, p, "rotate");
+        else
+            redirect_buf(s, p, "rrotate");
+        sorted = check_sorted_offset(s, p, elems);
+    }
+}
+/*         if ((p == s->a && p[0] > p[1]) || (p == s->b && p[0] < p[1]))
+        {
+            if (worth_or_not(p[0], p[1], elems, s, p) == 1)
+            {
+                redirect_buf(s, p, "switch");
+                ft_putendl("sa");
+                continue ;
+            }
+        }
+        if ((p == s->a && p[elems - 1] > p[0]) || (p == s->b && p[elems - 1] < p[0]))
+        {
+            if (worth_or_not(p[elems - 1], p[0], elems, s, p) == 1)
+            {
+                redirect_buf(s, p, "rrotate");
+                redirect_buf(s, p, "switch");
+                ft_putendl("rr & sa");
+                continue ;
+            }
+        }
+        if ((float)sorted < (float)elems / 2)
+            redirect_buf(s, p, "rotate");
+        else
+            redirect_buf(s, p, "rrotate");
+        sorted = check_sorted_offset(s, p, elems);
+    }
+} */
+
+
+
+/*         compare = compare_values(s, p, elems);
+        ft_printf("this to below:%d\n", compare);
+        print_shit(p, elems);
+        ft_printf("\n");
+        if (compare == -1)
         {
             redirect_buf(s, p, "rrotate"); //NEED TO MAKE CHANGES TO SLIM AS WELL!!!
             redirect_buf(s, p, "switch"); //JUST FUCKING CALCULATE MIN AND MAX FROM S!
         }
-        else if (dist == 0)
+        else if (compare == 0)
             redirect_buf(s, p, "switch");
-        else if ((float)dist < (float)elems / 2)
+        else if ((float)compare < (float)elems / 2)
             redirect_buf(s, p, "rotate");
         else
             redirect_buf(s, p, "rrotate");
-        dist = find_rule_breaker(s, p, elems);
-    }
-}
+        sorted = check_sorted_offset(s, p, elems); */
 
 int find_smallest(int *s, int elems, int *cur_min)
 {
@@ -121,7 +196,7 @@ void    solver_loop(t_stacks *s)
 {
     s->a = transform_stack(s->a, s->a_size);
     solver_looper(s, s->a, s->a_size);
-//    ft_printf("a done\n");
+    ft_printf("a done\n");
     s->b = transform_stack(s->b, s->b_size);
     solver_looper(s, s->b, s->b_size);
 }

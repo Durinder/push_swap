@@ -19,7 +19,7 @@ int	check_sorted_offset(t_stacks *slim, int *p, int elems) //FIX!!!
 	int	stop;
 
 	i = 0;
-	while(p[i] != INT_MIN)
+	while(p[i] != 0) // 0 = INT_MIN
 		i++;
 	stop = i;
 	if (p == slim->b)
