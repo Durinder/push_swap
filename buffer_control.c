@@ -12,15 +12,19 @@
 
 #include "push_swap.h"
 
-static void	print_buffer(t_buffer *buf)
+static void	print_and_free_buffer(t_buffer *buf)
 {
 	t_buffer	*cur;
+	t_buffer	*tmp;
 	
 	cur = buf;
 	while (cur != NULL)
 	{
 		ft_printf("%s\n", cur->cmd);
+		free(cur->cmd);
+		tmp = cur;
 		cur = cur->next;
+		free(tmp);
 	}
 }
 
@@ -148,5 +152,5 @@ void	execute_buf(t_stacks *s)
 		cur = cur->next;
 	}
 //	ft_printf("%d\n", ret);
-	print_buffer(s->buffer);
+	print_and_free_buffer(s->buffer);
 }

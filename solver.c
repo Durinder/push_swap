@@ -32,6 +32,5 @@ void	solver(t_stacks *s)
 //	s->buffer = cpy->buffer;
 //	ft_printf("cpy->buffer->cmd: %s", cpy->buffer->cmd);
 //	ft_printf("s->buffer->cmd: %s", s->buffer->cmd);
-//	free_all(NULL, NULL, cpy);
 	execute_buf(s);
 }

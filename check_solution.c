@@ -13,6 +13,28 @@
 #include "checker.h"
 #include "push_swap.h"
 
+static int	sorted_offset_loop(t_stacks *slim, int *p, int elems, int i, int stop)
+{
+	while (1)
+	{
+		ft_printf("loop\n");
+		if (i + 1 == elems)
+		{
+			if ((p == slim->a && p[i] > p[0] && stop != 0) || (p == slim->b && p[i] < p[0] && stop != 0))
+				return (-1);
+			if (stop == 0)
+				return (0);
+			i = 0;
+		}
+		else if ((p == slim->a && p[i] > p[i + 1]) || (p == slim->b && p[i] < p[i + 1])) // NOT WORKING!!!
+			return (-1);
+		i++;
+		if (i == stop)
+			return (i);
+	}
+	return (i);
+}
+
 int	check_sorted_offset(t_stacks *slim, int *p, int elems) //FIX!!!
 {
 	int	i;
@@ -26,31 +48,16 @@ int	check_sorted_offset(t_stacks *slim, int *p, int elems) //FIX!!!
 	{
 		i = 0;
 		stop = 0;
-		while (++i < elems)
+		while (i + 1 < elems)
 		{
+			i++;
+			ft_printf("i:%d, stop:%d,, p[i]:%d, p]i -1]:%d\n", i, stop, p[i], p[i-1]);
 			if (p[i] > p[i - 1])
 				stop = i;
 		}
 		i = stop;
 	}
-//	ft_printf("%d", stop);
-	while (1)
-	{
-		if (i + 1 == elems)
-		{
-			if ((p == slim->a && p[i] > p[0]) || (p == slim->b && p[i] < p[0]))
-				return (-1);
-			if (stop == 0)
-				return (0);
-			i = 0;
-		}
-		else if ((p == slim->a && p[i] > p[i + 1]) || (p == slim->b && p[i] < p[i + 1])) // NOT WORKING!!!
-			return (-1);
-		i++;
-		if (i == stop)
-			return (i);
-	}
-	return (i);
+	return (sorted_offset_loop(slim, p, elems, i, stop));
 }
 
 int	check_solution(t_stacks *stacks)

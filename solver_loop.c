@@ -13,9 +13,10 @@ void    print_shit(int *s, int elems)
     }
 }
 
-static int worth_or_not(int a, int b, int elems, t_stacks *s, int *p)
+static int worth_or_not(int a, int b, t_stacks *s, int *p)
 {
     int inside;
+//    int outside;
 
     inside = 0;
     while (a + inside != b)
@@ -25,21 +26,27 @@ static int worth_or_not(int a, int b, int elems, t_stacks *s, int *p)
         else
             inside--;
     }
-    if (inside < 0)
-        inside = inside * -1 - 1;
-    
-    ft_printf("worth_or_not - a:%d b:%d, %d", a, b, elems - 2 - inside);
-    if ((elems - 2 - inside > inside && p == s->a && ??? || \
-        (elems - 2 - inside < inside && p == s->b && ???)))
-    {
-        ft_putendl("yes");
-        return (1);
-    }
+    if (a > b)
+        inside *= -1;
+    inside--;
+/*     if (inside < 0)
+        inside = inside * -1; */
+/*     if (p == s->a)
+        outside = s->a_size - 2 - inside;
     else
-    {
-        ft_putendl("no");
+        outside = s->b_size - 2 - inside; */
+//    ft_printf("worth_or_not - a:%d b:%d, inside:%d outside:%d", a, b, inside, outside);
+    if ((p == s->a && s->a_size - 2 - inside > inside && a > b) || \
+        (p == s->b && s->b_size - 2 - inside > inside && a < b))
+//    {
+//        ft_putendl("yes");
+        return (1);
+//    }
+    else
+    //{
+        //ft_putendl("no");
         return (0);
-    }
+    //}
 }
 
 /* static void compare_values(t_stacks *s, int *p, int elems)
@@ -78,20 +85,18 @@ static void solver_looper(t_stacks *s, int *p, int elems)
     sorted = check_sorted_offset(s, p, elems);
     while (sorted != 0)
     {
-        ft_printf("sorted:%d\n", sorted);
-        print_shit(p, elems);
-        if (worth_or_not(p[0], p[1], elems, s, p))
+/*         ft_printf("sorted:%d\n", sorted);
+        print_shit(p, elems); */
+        if (worth_or_not(p[0], p[1], s, p))
         {
             redirect_buf(s, p, "switch");
-            continue ;
         }
-        if (worth_or_not(p[elems - 1], p[0], elems, s, p))
-            {
-                redirect_buf(s, p, "rrotate");
-                redirect_buf(s, p, "switch");
-                continue ;
-            }
-        if ((float)sorted < (float)elems / 2)
+        else if (worth_or_not(p[elems - 1], p[0], s, p))
+        {
+            redirect_buf(s, p, "rrotate");
+            redirect_buf(s, p, "switch");
+        }
+        else if ((float)sorted < (float)elems / 2)
             redirect_buf(s, p, "rotate");
         else
             redirect_buf(s, p, "rrotate");
@@ -144,7 +149,7 @@ static void solver_looper(t_stacks *s, int *p, int elems)
             redirect_buf(s, p, "rrotate");
         sorted = check_sorted_offset(s, p, elems); */
 
-int find_smallest(int *s, int elems, int *cur_min)
+int find_smallest(int *s, int elems, int *cur_min) // FIX THIS SHIT
 {
     int i;
     int candidate;
@@ -152,26 +157,30 @@ int find_smallest(int *s, int elems, int *cur_min)
 
     i = 0;
     candidate = *cur_min;
-    ret = 0;
+    ret = s[0];
     while (i < elems)
     {
         if (candidate == *cur_min && s[i] > *cur_min)
         {
+            ft_putendl("eka");
             candidate = s[i];
             ret = i;
+            ft_printf("candidate:%d\n", candidate);
         }
         else if (s[i] < candidate && s[i] > *cur_min)
         {
+            ft_putendl("toka");
             candidate = s[i];
             ret = i;
         }
         i++;
+        ft_putendl("i++");
     }
     *cur_min = candidate;
     return (ret);
 }
 
-int *transform_stack(int *s, int elems)
+int *transform_stack(int *s, int elems) // JOS EKA ON 0 NIIN ONGELMA!!!
 {
     int	*slim;
 	int	i;
@@ -186,6 +195,7 @@ int *transform_stack(int *s, int elems)
     while (i < elems)
     {
         min_i = find_smallest(s, elems, &cur_min);
+        ft_printf("min_i:%d\n", min_i);
         slim[min_i] = i - INT_MIN;
         i++;
     }
@@ -197,6 +207,8 @@ void    solver_loop(t_stacks *s)
     s->a = transform_stack(s->a, s->a_size);
     solver_looper(s, s->a, s->a_size);
     ft_printf("a done\n");
+    print_shit(s->b, s->b_size);
     s->b = transform_stack(s->b, s->b_size);
+    print_shit(s->b, s->b_size);
     solver_looper(s, s->b, s->b_size);
 }
