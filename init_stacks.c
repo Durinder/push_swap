@@ -12,9 +12,8 @@
 
 #include "checker.h"
 #include "libft/libft.h"
-#include <limits.h>
 
-void	init_b(t_stacks *stacks)
+static int	*init_b(t_stacks *stacks)
 {
 	int	*stack;
 
@@ -22,8 +21,8 @@ void	init_b(t_stacks *stacks)
 	if (stack == NULL)
 		ft_error_exit("Failed to malloc for (int *)stack");
 	stacks->b = stack;
-	stacks->a_size = stacks->elems;
 	stacks->b_size = 0;
+	return (stack);
 }
 
 int	count(char **input, char n)
@@ -40,29 +39,6 @@ int	count(char **input, char n)
 	if (n == 1)
 		free(input);
 	return (i);
-}
-
-void	check_duplicates(int *stack, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (size == 1)
-		return ;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (stack[i] == stack[j])
-			{
-				ft_error_exit("Error: Duplicate number(s) in input.");
-			}
-			j++;
-		}
-		i++;
-	}
 }
 
 int	*init(int argc, char **input)
@@ -92,4 +68,36 @@ int	*init(int argc, char **input)
 		stack[i] = ft_atoi(input[i]);
 	}
 	return (stack);
+}
+
+t_stacks	*init_stacks(char **input, int argc, char **argv)
+{
+	t_stacks	*stacks;
+	
+	stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	if (stacks == NULL)
+		ft_error_exit("Error: Failed to malloc (t_stacks *)stacks");
+	if (input)
+	{
+		stacks->v = v_check(&input, 1);
+		stacks->a = init(count(input, 0), input);
+		stacks->elems = count(input, 1);
+	}
+	else
+	{
+		stacks->v = v_check(&argv, 0);
+		stacks->a = init(argc, ++argv);
+		stacks->elems = (argc - 1 - stacks->v);
+	}
+	stacks->buffer = NULL;
+	stacks->b = init_b(stacks);
+	stacks->a_size = stacks->elems;
+	check_duplicates(stacks->a, stacks->elems);
+//	init_b(stacks);
+/* 	stacks->buffer = ft_memalloc(sizeof(t_buffer));
+	if (stacks->buffer == NULL)
+		ft_error_exit("Error: Failed to malloc.");
+	stacks->buffer->cmd = NULL;
+	stacks->buffer->next = NULL; */
+	return (stacks);
 }

@@ -15,6 +15,7 @@
 # include "libft/libft.h"
 # include "libft/get_next_line.h"
 # include "libft/ft_printf/ft_printf.h"
+# include <limits.h>
 
 typedef struct s_buffer {
 	char			*cmd;
@@ -31,9 +32,9 @@ typedef struct s_stacks {
 	char			v;
 }	t_stacks;
 
+t_stacks	*init_stacks(char **input, int argc, char **argv);
 int		*init(int argc, char **input);
 int		count(char **input, char n);
-void	init_b(t_stacks *stacks);
 void	read_commands(t_stacks *stacks);
 int		check_solution(t_stacks *stacks);
 void	sa(t_stacks *stacks);
