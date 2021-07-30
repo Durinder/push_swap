@@ -24,8 +24,9 @@ t_stacks	*copy_stacks(t_stacks *src);
 void		solver_small_a(t_stacks *s);
 void		solver_small_dual(t_stacks *s);
 void		solver_medium(t_stacks *s);
-void        solver_high(t_stacks *s);
-void        solver_loop(t_stacks *s);
+void        radix_sort(t_stacks *s);
+/* void        solver_high(t_stacks *s);
+void        solver_loop(t_stacks *s); */
 void	    sort_array(int **array, int elems);
 void	    redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print);
 void		redirect_buf(t_stacks *s, int *p, const char *cmd);

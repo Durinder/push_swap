@@ -14,7 +14,7 @@
 
 void	pa(t_stacks *stacks)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < stacks->a_size)
@@ -36,7 +36,7 @@ void	pa(t_stacks *stacks)
 
 void	pb(t_stacks *stacks)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < stacks->b_size)

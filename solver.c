@@ -26,7 +26,7 @@ void	solver(t_stacks *s)
 	else if (s->elems <= 6)
 		solver_medium(s);
 	else if (s->elems > 6)
-		solver_high(s);
+		radix_sort(s);
 //	ft_printf("testi");
 //	*s->buffer = *cpy->buffer;
 //	s->buffer = cpy->buffer;

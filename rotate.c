@@ -14,8 +14,8 @@
 
 void	ra(t_stacks *stacks)
 {
-	int	i;
-	int	tmp;
+	size_t	i;
+	int		tmp;
 
 	tmp = stacks->a[0];
 	i = 0;
@@ -29,8 +29,8 @@ void	ra(t_stacks *stacks)
 
 void	rb(t_stacks *stacks)
 {
-	int	i;
-	int	tmp;
+	size_t	i;
+	int		tmp;
 
 	tmp = stacks->b[0];
 	i = 0;
@@ -44,8 +44,8 @@ void	rb(t_stacks *stacks)
 
 void	rra(t_stacks *stacks)
 {
-	int	i;
-	int	tmp;
+	size_t	i;
+	int		tmp;
 
 	tmp = stacks->a[stacks->a_size - 1];
 	i = stacks->a_size - 1;
@@ -59,8 +59,8 @@ void	rra(t_stacks *stacks)
 
 void	rrb(t_stacks *stacks)
 {
-	int	i;
-	int	tmp;
+	size_t	i;
+	int		tmp;
 
 	tmp = stacks->b[stacks->b_size - 1];
 	i = stacks->b_size - 1;

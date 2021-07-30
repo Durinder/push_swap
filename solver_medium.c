@@ -57,9 +57,9 @@ void	sort_array(int **array, int elems)
 
 static int	get_cut_off(t_stacks *s)
 {
-	int	*sorted;
-	int	i;
-	int	cut_off;
+	int		*sorted;
+	size_t	i;
+	int		cut_off;
 
 	sorted = ft_memalloc(sizeof(int *) * s->elems - 1);
 	if (sorted == NULL)

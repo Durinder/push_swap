@@ -36,7 +36,7 @@ char	v_check(char ***input, char n)
 
 void	visualize(t_stacks *stacks)
 {
-	int	i;
+	size_t	i;
 
 	ft_printf("STACK_A     |     STACK_B\n");
 	i = 0;

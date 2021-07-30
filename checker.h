@@ -26,9 +26,9 @@ typedef struct s_stacks {
 	struct s_buffer	*buffer;
 	int				*a;
 	int				*b;
-	int				elems;
-	int				a_size;
-	int				b_size;
+	size_t			elems;
+	size_t			a_size;
+	size_t			b_size;
 	char			v;
 }	t_stacks;
 

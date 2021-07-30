@@ -84,7 +84,7 @@ void	check_duplicates(int *stack, int size)
 
 int	check_solution(t_stacks *stacks)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < stacks->elems - 1)
