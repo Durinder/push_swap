@@ -36,7 +36,7 @@ static void	solver_small_b(t_stacks *s)
 
 	min = get_min(s->b, s->b_size);
 	p = s->b;
-	if (s->b_size == 2 && p[0] < p[1])
+	if (s->b_size == 2 && p[0] > p[1])
 	{
 		redirect_buf(s, p, "switch");
 		return ;
