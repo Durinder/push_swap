@@ -18,7 +18,7 @@ CHECKER_HEADERS = -I checker.h
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 
 PUSH_SWAP = push_swap
-PUSH_SWAP_SRC = push_swap.c visualizer.c init_stacks.c check_solution.c redirect.c swap.c push.c rotate.c operate_both.c free_all.c solver.c solver_small.c solver_medium.c radix_sort.c make_copy.c buffer_control.c
+PUSH_SWAP_SRC = push_swap.c visualizer.c init_stacks.c check_solution.c redirect.c swap.c push.c rotate.c operate_both.c free_all.c solver.c solver_small.c solver_medium.c radix_sort.c buffer_control.c
 PUSH_SWAP_HEADERS = -I push_swap.h
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:.c=.o)
 
