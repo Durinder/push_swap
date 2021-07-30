@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 	stacks = init_stacks(input, argc, argv);
 	read_commands(stacks);
 	if (check_solution(stacks) == 1)
-		ft_printf("OK\n");
+		ft_putendl_fd("OK", 0);
 	else
-		ft_printf("KO\n");
+		ft_putendl_fd("KO", 2);
 	free_all(NULL, NULL, stacks);
 	return (0);
 }
