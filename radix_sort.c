@@ -62,7 +62,7 @@ static void transform_stack(t_stacks *s)
 
 	slim = ft_memalloc(sizeof(int *) * s->elems);
 	if (slim == NULL)
-		ft_error_exit("Error: Failed to malloc");
+		ft_error_exit("Error");
     i = 0;
     cur_min = INT_MIN;
     while (i < s->elems)

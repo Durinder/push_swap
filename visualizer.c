@@ -18,7 +18,7 @@ char	v_check(char ***input, char n)
 
 	i = 0;
 	if (ft_strequ(input[0][i], "-v"))
-		ft_error_exit("Error: No int(s) in argument");
+		ft_error_exit("Error");
 	while (input[0][i + 1])
 	{
 		i++;

@@ -28,28 +28,6 @@ static int	get_min(int *s, int size)
 	}
 	return (min);
 }
-/*
-static int	get_min_dual(t_stacks *s, int which)
-{
-	int		min;
-	size_t	tmp;
-
-	min = 0;
-	if (which == 0)
-	{
-		tmp = s->a_size;
-		min = get_min(s->a, tmp);
-	}
-	else if (which == 1)
-	{
-		tmp = s->b_size;
-		min = get_min(s->b, tmp);
-	}
-	else
-		ft_error_exit("Error: no stack defined.");
-	return (min);
-}
-*/
 
 static void	solver_small_b(t_stacks *s)
 {
@@ -92,11 +70,6 @@ void	solver_small_a(t_stacks *s)
 
 void	solver_small_dual(t_stacks *s)
 {
-//	int	a_min;
-//	int	b_min;
-
-//	a_min = get_min_dual(s, 0);
-//	b_min = get_min_dual(s, 1);
 	solver_small_a(s);
 	solver_small_b(s);
 }

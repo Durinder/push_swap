@@ -49,7 +49,7 @@ int	*init(int argc, char **input)
 
 	stack = ft_memalloc(sizeof(int *) * argc - 1);
 	if (stack == NULL)
-		ft_error_exit("Failed to malloc for (int *)stack");
+		ft_error_exit("Error");
 	i = -1;
 	while (input[++i])
 	{
@@ -59,12 +59,12 @@ int	*init(int argc, char **input)
 			if (j == 0 && input[i][j] == '-')
 				j++;
 			if (ft_isdigit(input[i][j]) == 0)
-				ft_error_exit("Error: Invalid character in input.");
+				ft_error_exit("Error");
 		}
 		if (ft_atoi_l(input[i]) > INT_MAX || ft_atoi_l(input[i]) < INT_MIN)
-			ft_error_exit("Error: A number too large or too small in input.");
+			ft_error_exit("Error");
 		if (ft_strcmp(input[i], "") == 0)
-			ft_error_exit("Error: Empty argument.");
+			ft_error_exit("Error");
 		stack[i] = ft_atoi(input[i]);
 	}
 	return (stack);
@@ -76,7 +76,7 @@ t_stacks	*init_stacks(char **input, int argc, char **argv)
 	
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
-		ft_error_exit("Error: Failed to malloc (t_stacks *)stacks");
+		ft_error_exit("Error");
 	if (input)
 	{
 		stacks->v = v_check(&input, 1);
@@ -93,11 +93,5 @@ t_stacks	*init_stacks(char **input, int argc, char **argv)
 	stacks->b = init_b(stacks);
 	stacks->a_size = stacks->elems;
 	check_duplicates(stacks->a, stacks->elems);
-//	init_b(stacks);
-/* 	stacks->buffer = ft_memalloc(sizeof(t_buffer));
-	if (stacks->buffer == NULL)
-		ft_error_exit("Error: Failed to malloc.");
-	stacks->buffer->cmd = NULL;
-	stacks->buffer->next = NULL; */
 	return (stacks);
 }

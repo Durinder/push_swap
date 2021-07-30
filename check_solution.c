@@ -74,7 +74,7 @@ void	check_duplicates(int *stack, int size)
 		{
 			if (stack[i] == stack[j])
 			{
-				ft_error_exit("Error: Duplicate number(s) in input.");
+				ft_error_exit("Error");
 			}
 			j++;
 		}

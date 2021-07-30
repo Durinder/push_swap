@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	{
 		input = ft_strsplit(argv[1], ' ');
 		if (input[0] == NULL)
-			ft_error_exit("Error: Empty argument.");
+			ft_error_exit("Error");
 	}
 	stacks = init_stacks(input, argc, argv);
 	read_commands(stacks);
