@@ -69,6 +69,7 @@ static void	*get_pointer(const char *cmd)
 	else if (ft_strcmp(cmd, "rrr") == 0)
 		return (rrr);
 	ft_error_exit("Error");
+	exit(0);
 }
 
 void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print)
