@@ -18,8 +18,6 @@ void	solver(t_stacks *s)
 
 	if (check_solution(s))
 		return ;
-	if (s->elems == 2)
-		redirect(sa, s, "sa");
 	if (s->elems <= 3)
 		solver_small_a(s);
 	else if (s->elems <= 6)

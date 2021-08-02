@@ -38,7 +38,7 @@ static void	solver_small_b(t_stacks *s)
 	p = s->b;
 	if (s->b_size == 2 && p[0] < p[1])
 		redirect_buf(s, p, "switch");
-	if (s->b_size == 3)
+	else if (s->b_size == 3)
 	{
 		if ((min == p[0] && p[1] < p[2]) || \
 				(min == p[1] && p[0] > p[2]) || \
@@ -58,14 +58,19 @@ void	solver_small_a(t_stacks *s)
 
 	min = get_min(s->a, s->a_size);
 	p = s->a;
-	if ((min == p[0] && p[1] > p[2]) || \
+	if (s->a_size == 2 && p[0] > p[1])
+		redirect_buf(s, p, "switch");
+	else if (s->a_size == 3)
+	{
+		if ((min == p[0] && p[1] > p[2]) || \
 			(min == p[1] && p[0] < p[2]) || \
 			(min == p[2] && p[0] > p[1]))
-		redirect_buf(s, p, "switch");
-	if (min == p[1])
-		redirect_buf(s, p, "rotate");
-	else if (min == p[2])
-		redirect_buf(s, p, "rrotate");
+			redirect_buf(s, p, "switch");
+		if (min == p[1])
+			redirect_buf(s, p, "rotate");
+		else if (min == p[2])
+			redirect_buf(s, p, "rrotate");
+	}
 }
 
 void	solver_small_dual(t_stacks *s)
