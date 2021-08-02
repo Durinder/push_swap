@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 15:17:57 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:09:36 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ static void	solver_small_b(t_stacks *s)
 	min = get_min(s->b, s->b_size);
 	p = s->b;
 	if (s->b_size == 2 && p[0] < p[1])
-	{
 		redirect_buf(s, p, "switch");
-		return ;
+	if (s->b_size == 3)
+	{
+		if ((min == p[0] && p[1] < p[2]) || \
+				(min == p[1] && p[0] > p[2]) || \
+				(min == p[2] && p[0] < p[1]))
+				redirect_buf(s, p, "switch");
+		if (min == p[0])
+			redirect_buf(s, p, "rotate");
+		else if (min == p[1])
+			redirect_buf(s, p, "rrotate");
 	}
-	if ((min == p[0] && p[1] < p[2]) || \
-			(min == p[1] && p[0] > p[2]) || \
-			(min == p[2] && p[0] < p[1]))
-			redirect_buf(s, p, "switch");
-	if (min == p[0])
-		redirect_buf(s, p, "rotate");
-	else if (min == p[1])
-		redirect_buf(s, p, "rrotate");
 }
 
 void	solver_small_a(t_stacks *s)
