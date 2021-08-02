@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 11:53:23 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 13:48:15 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:47:09 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	add_to_last(t_stacks *s, const char *cmd)
 			cur = cur->next;
 		cur->next = new;
 	}
-	redirect(NULL, s, cmd, 0);
+	redirect(NULL, s, cmd);
 }
 
 static void	replace(t_buffer *node, const char *replacement, int i)

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:31:54 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 15:07:42 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:38:03 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	command_switch(const char *cmd, t_stacks *stacks)
 	command_switch_rotates(cmd, stacks);
 }
 
-static int	allowed_commands(char *cmd)
+static int	allowed_commands(const char *cmd)
 {
 	if (ft_strcmp(cmd, "sa") == 0 || ft_strcmp(cmd, "sb") == 0 || \
 			ft_strcmp(cmd, "ss") == 0 || ft_strcmp(cmd, "pa") == 0 || \

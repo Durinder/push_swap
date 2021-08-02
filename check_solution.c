@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:52:31 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 13:47:51 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:28:06 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	check_duplicates(int *stack, int size)
 		while (j < size)
 		{
 			if (stack[i] == stack[j])
-			{
 				ft_error_exit("Error");
-			}
 			j++;
 		}
 		i++;

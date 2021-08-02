@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:53:07 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 15:27:23 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:45:45 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	*init_b(t_stacks *stacks)
 	return (stack);
 }
 
-int	count(char **input, char n)
+static int	count(char **input, const char n)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ int	count(char **input, char n)
 	return (i);
 }
 
-int	*init(int argc, char **input)
+static int	*init(int argc, char **input)
 {
 	int	*stack;
 	int	i;

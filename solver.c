@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:03:44 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 13:45:30 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:46:52 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	solver(t_stacks *s)
 	if (check_solution(s))
 		return ;
 	if (s->elems == 2)
-		redirect(sa, s, "sa", 1);
+		redirect(sa, s, "sa");
 	if (s->elems <= 3)
 		solver_small_a(s);
 	else if (s->elems <= 6)

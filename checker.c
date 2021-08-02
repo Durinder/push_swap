@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:45:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 15:20:37 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:45:20 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 	stacks = init_stacks(input, argc, argv);
 	read_commands(stacks);
 	if (check_solution(stacks) == 1)
-		ft_putendl_fd("OK", 0);
+		ft_putendl("OK");
 	else
-		ft_putendl_fd("KO", 2);
+		ft_putendl("KO");
 	free_stacks(stacks);
 	return (0);
 }

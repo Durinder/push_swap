@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   visualizer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 17:39:50 by jhallama          #+#    #+#             */
-/*   Updated: 2020/10/15 18:32:41 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:48:06 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-char	v_check(char ***input, char n)
+char	v_check(char ***input, const char n)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:35:16 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 16:24:03 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:39:15 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,10 @@ static void	*get_pointer(const char *cmd)
 	exit(0);
 }
 
-void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print)
+void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd)
 {
-	if (print)
-		ft_printf("%s\n", cmd);
 	if (f != NULL)
 		f(s);
 	else
-		redirect(get_pointer(cmd), s, cmd, print);
+		redirect(get_pointer(cmd), s, cmd);
 }
