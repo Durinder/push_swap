@@ -33,10 +33,10 @@ void	add_to_last(t_stacks *s, const char *cmd)
 	{
 		cur = ft_memalloc(sizeof(t_buffer));
 		if (cur == NULL)
-			ft_error_exit("Error: failed to malloc.");
+			ft_error_exit("Error");
 		cur->cmd = ft_strdup(cmd);
 		if (cur->cmd == NULL)
-			ft_error_exit("Error: failed to malloc.");
+			ft_error_exit("Error");
 		cur->next = NULL;
 		s->buffer = cur;
 	}
@@ -44,17 +44,16 @@ void	add_to_last(t_stacks *s, const char *cmd)
 	{
 		new = ft_memalloc(sizeof(t_buffer));
 		if (new == NULL)
-			ft_error_exit("Error: failed to malloc.");
+			ft_error_exit("Error");
 		new->cmd = ft_strdup(cmd);
 		if (new->cmd == NULL)
-			ft_error_exit("Error: failed to mallloc.");
+			ft_error_exit("Error");
 		new->next = NULL;
 		cur = s->buffer;
 		while (cur->next != NULL)
 			cur = cur->next;
 		cur->next = new;
 	}
-//	ft_printf("%s\n", cmd);
 	redirect(NULL, s, cmd, 0);
 }
 
@@ -66,7 +65,7 @@ static void	replace(t_buffer *node, const char *replacement, int i)
 	free(node->cmd);
 	node->cmd = ft_strdup(replacement);
 	if (node == NULL)
-		ft_error_exit("Error: failed to malloc");
+		ft_error_exit("Error");
 	cur = node;
 	while (i > 1)
 	{
@@ -93,7 +92,6 @@ static int	check_optimization(t_buffer *node, const char *look_for,
 			return (0);
 		if (ft_strcmp(look_for, cur->cmd) == 0)
 		{
-//			ft_printf("look_for:%s, cur->cmd:%s, node:%s, counter:%d\n", look_for, cur->cmd, node->cmd, counter);
 			replace(node, replacement, counter);
 			return (1);
 		}
@@ -128,11 +126,10 @@ void	execute_buf(t_stacks *s)
 
 	cur = s->buffer;
 	if (cur == NULL)
-		free_all("FATAL ERROR", NULL, s);
+		ft_error_exit("Error");
 	ret = 0;
 	while (cur->next != NULL)
 	{
-//		ft_printf("execute_buf:%s\n", cur->cmd);
 		if (ft_strcmp(cur->cmd, "sa") == 0)
 			ret += check_optimization(cur, "sb", "ss");
 		if (ft_strcmp(cur->cmd, "sb") == 0)
@@ -147,6 +144,5 @@ void	execute_buf(t_stacks *s)
 			ret += check_optimization(cur, "rra", "rrr");
 		cur = cur->next;
 	}
-//	ft_printf("%d\n", ret);
 	print_buffer(s->buffer);
 }

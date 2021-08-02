@@ -41,8 +41,7 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 		add_to_last(s, cmd);
 	}
 	else
-		ft_error_exit("Error: incorrect operation");
-//	ft_printf("%s\n", cmd);
+		ft_error_exit("Error");
 }
 
 static void	*get_pointer(const char *cmd)
@@ -69,39 +68,16 @@ static void	*get_pointer(const char *cmd)
 		return (rrb);
 	else if (ft_strcmp(cmd, "rrr") == 0)
 		return (rrr);
-	ft_error_exit("Error: invalid command.");
+	ft_error_exit("Error");
 	exit(0);
 }
 
-/*static void	init_operation_pointers()
-{
-	g_operations[0] = sa;
-	g_operations[1] = sb;
-	g_operations[2] = ss;
-	g_operations[3] = pa;
-	g_operations[4] = pb;
-	g_operations[5] = ra;
-	g_operations[6] = rb;
-	g_operations[7] = rr;
-	g_operations[8] = rra;
-	g_operations[9] = rrb;
-	g_operations[10] = rrr;
-}*/
-
 void	redirect(void (*f)(t_stacks *), t_stacks *s, const char *cmd, int print)
 {
-//	void	(*g_operations[11])(t_stacks *stacks) = {
-//sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
-	
 	if (print)
 		ft_printf("%s\n", cmd);
 	if (f != NULL)
 		f(s);
 	else
 		redirect(get_pointer(cmd), s, cmd, print);
-//	if (check_solution(s))
-//	{
-//		ft_printf("solved!\n");
-//		exit(0);
-//	}
 }

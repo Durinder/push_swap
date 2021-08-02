@@ -83,11 +83,11 @@ void	read_commands(t_stacks *stacks)
 		if (ret == 0)
 			break ;
 		if (ret == -1)
-			ft_error_exit("Error: get_next_line returned -1.");
+			ft_error_exit("Error");
 		if (allowed_commands(line) == 1)
 		{
 			ft_strdel(&line);
-			ft_error_exit("Error: Incorrect operation.");
+			ft_error_exit("Error");
 		}
 		command_switch(line, stacks);
 		if (stacks->v == 1)

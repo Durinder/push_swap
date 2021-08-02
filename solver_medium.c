@@ -63,7 +63,7 @@ static int	get_cut_off(t_stacks *s)
 
 	sorted = ft_memalloc(sizeof(int *) * s->elems - 1);
 	if (sorted == NULL)
-		free_all("Error: Failed to malloc", NULL, s);
+		ft_error_exit("Error");
 	i = 0;
 	while (i < s->elems)
 	{
@@ -81,8 +81,7 @@ void	solver_medium(t_stacks *s)
 	int		cut_off;
 
 	cut_off = get_cut_off(s);
-//	ft_putnbr(cut_off);
-	push_to_b(s, cut_off); // FIX
+	push_to_b(s, cut_off);
 	solver_small_dual(s);
 	while(s->b_size > 0)
 		add_to_last(s, "pa");
