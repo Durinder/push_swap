@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:45:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:09:29 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 15:20:37 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("OK", 0);
 	else
 		ft_putendl_fd("KO", 2);
-	free_all(NULL, NULL, stacks);
+	free_stacks(stacks);
 	return (0);
 }

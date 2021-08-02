@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 18:53:07 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 17:19:27 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 15:27:23 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	*init(int argc, char **input)
 t_stacks	*init_stacks(char **input, int argc, char **argv)
 {
 	t_stacks	*stacks;
-	
+
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
 		ft_error_exit("Error");

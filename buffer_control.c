@@ -6,49 +6,28 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 11:53:23 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 16:30:11 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:48:15 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	print_buffer(t_buffer *buf)
-{
-	t_buffer	*cur;
-	
-	cur = buf;
-	while (cur != NULL)
-	{
-		ft_printf("%s\n", cur->cmd);
-		cur = cur->next;
-	}
-}
 
 void	add_to_last(t_stacks *s, const char *cmd)
 {
 	t_buffer	*cur;
 	t_buffer	*new;
 
+	new = ft_memalloc(sizeof(t_buffer));
+	if (new == NULL)
+		ft_error_exit("Error");
+	new->cmd = ft_strdup(cmd);
+	if (new->cmd == NULL)
+		ft_error_exit("Error");
+	new->next = NULL;
 	if (s->buffer == NULL)
-	{
-		cur = ft_memalloc(sizeof(t_buffer));
-		if (cur == NULL)
-			ft_error_exit("Error");
-		cur->cmd = ft_strdup(cmd);
-		if (cur->cmd == NULL)
-			ft_error_exit("Error");
-		cur->next = NULL;
-		s->buffer = cur;
-	}
+		s->buffer = new;
 	else
 	{
-		new = ft_memalloc(sizeof(t_buffer));
-		if (new == NULL)
-			ft_error_exit("Error");
-		new->cmd = ft_strdup(cmd);
-		if (new->cmd == NULL)
-			ft_error_exit("Error");
-		new->next = NULL;
 		cur = s->buffer;
 		while (cur->next != NULL)
 			cur = cur->next;
@@ -78,6 +57,29 @@ static void	replace(t_buffer *node, const char *replacement, int i)
 	free(del);
 }
 
+static int	conditions(t_buffer *cur, const char *look_for)
+{
+	if (!ft_strcmp(look_for, "sa") && (!ft_strcmp(cur->cmd, "ra") || \
+	!ft_strcmp(cur->cmd, "rra")))
+		return (1);
+	if (!ft_strcmp(look_for, "sb") && (!ft_strcmp(cur->cmd, "rb") || \
+	!ft_strcmp(cur->cmd, "rrb")))
+		return (1);
+	if (!ft_strcmp(look_for, "ra") && (!ft_strcmp(cur->cmd, "sa") || \
+	!ft_strcmp(cur->cmd, "rra")))
+		return (1);
+	if (!ft_strcmp(look_for, "rb") && (!ft_strcmp(cur->cmd, "sb") || \
+	!ft_strcmp(cur->cmd, "rrb")))
+		return (1);
+	if (!ft_strcmp(look_for, "rra") && (!ft_strcmp(cur->cmd, "sa") || \
+	!ft_strcmp(cur->cmd, "ra")))
+		return (1);
+	if (!ft_strcmp(look_for, "rrb") && (!ft_strcmp(cur->cmd, "sb") || \
+	!ft_strcmp(cur->cmd, "rb")))
+		return (1);
+	return (0);
+}
+
 static int	check_optimization(t_buffer *node, const char *look_for,
 		const char *replacement)
 {
@@ -95,23 +97,7 @@ static int	check_optimization(t_buffer *node, const char *look_for,
 			replace(node, replacement, counter);
 			return (1);
 		}
-		if (ft_strcmp(look_for, "sa") == 0 && (ft_strcmp(cur->cmd, "ra") == 0 || \
-		ft_strcmp(cur->cmd, "rra") == 0))
-			return (0);
-		if (ft_strcmp(look_for, "sb") == 0 && (ft_strcmp(cur->cmd, "rb") == 0 || \
-		ft_strcmp(cur->cmd, "rrb") == 0))
-			return (0);
-		if (ft_strcmp(look_for, "ra") == 0 && (ft_strcmp(cur->cmd, "sa") == 0 || \
-		ft_strcmp(cur->cmd, "rra") == 0))
-			return (0);
-		if (ft_strcmp(look_for, "rb") == 0 && (ft_strcmp(cur->cmd, "sb") == 0 || \
-		ft_strcmp(cur->cmd, "rrb") == 0))
-			return (0);
-		if (ft_strcmp(look_for, "rra") == 0 && (ft_strcmp(cur->cmd, "sa") == 0 || \
-		ft_strcmp(cur->cmd, "ra") == 0))
-			return (0);
-		if (ft_strcmp(look_for, "rrb") == 0 && (ft_strcmp(cur->cmd, "sb") == 0 || \
-		ft_strcmp(cur->cmd, "rb") == 0))
+		if (conditions(cur, look_for))
 			return (0);
 		cur = cur->next;
 		counter++;
@@ -144,5 +130,4 @@ void	execute_buf(t_stacks *s)
 			ret += check_optimization(cur, "rra", "rrr");
 		cur = cur->next;
 	}
-	print_buffer(s->buffer);
 }
