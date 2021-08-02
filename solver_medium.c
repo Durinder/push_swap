@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:21:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 18:26:01 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:21:13 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	push_to_b(t_stacks *s, int co)
 	{
 		if (s->a[0] < co)
 		{
-//			ft_printf("push");
 			redirect_buf(s, s->b, "push");
 			continue ;
 		}
@@ -83,6 +82,6 @@ void	solver_medium(t_stacks *s)
 	cut_off = get_cut_off(s);
 	push_to_b(s, cut_off);
 	solver_small_dual(s);
-	while(s->b_size > 0)
+	while (s->b_size > 0)
 		add_to_last(s, "pa");
 }

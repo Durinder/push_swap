@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:35:16 by jhallama          #+#    #+#             */
-/*   Updated: 2021/07/07 18:23:35 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:24:03 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ void	redirect_buf(t_stacks *s, int *p, const char *cmd)
 			add_to_last(s, "rrb");
 	}
 	else if (p == NULL)
-	{
 		add_to_last(s, cmd);
-	}
-	else
-		ft_error_exit("Error");
 }
 
 static void	*get_pointer(const char *cmd)

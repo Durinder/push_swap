@@ -6,7 +6,7 @@
 /*   By: jhallama <jhallama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:18:35 by jhallama          #+#    #+#             */
-/*   Updated: 2021/08/02 13:09:36 by jhallama         ###   ########.fr       */
+/*   Updated: 2021/08/02 16:24:51 by jhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	solver_small_b(t_stacks *s)
 		if ((min == p[0] && p[1] < p[2]) || \
 				(min == p[1] && p[0] > p[2]) || \
 				(min == p[2] && p[0] < p[1]))
-				redirect_buf(s, p, "switch");
+			redirect_buf(s, p, "switch");
 		if (min == p[0])
 			redirect_buf(s, p, "rotate");
 		else if (min == p[1])
@@ -61,7 +61,7 @@ void	solver_small_a(t_stacks *s)
 	if ((min == p[0] && p[1] > p[2]) || \
 			(min == p[1] && p[0] < p[2]) || \
 			(min == p[2] && p[0] > p[1]))
-			redirect_buf(s, p, "switch");
+		redirect_buf(s, p, "switch");
 	if (min == p[1])
 		redirect_buf(s, p, "rotate");
 	else if (min == p[2])
