@@ -14,10 +14,8 @@
 
 void	free_stacks(t_stacks *stacks)
 {
-	size_t		i;
 	t_buffer	*tmp;
 
-	i = 0;
 	if (stacks)
 	{
 		if (stacks->buffer)
